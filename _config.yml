@@ -54,3 +54,6 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - .gitignore
+  - .ruby-version
+  - README.md
