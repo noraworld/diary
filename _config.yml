@@ -22,8 +22,8 @@ title: Noraworld Diary
 # email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   noraworld の個人的な公開日記です。日常の出来事や思ったこと、ゲーム、コーディング、食べものなど、取り留めのないことを自由奔放に綴っています。
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/diary" # the subpath of your site, e.g. /blog
+url: "https://noraworld.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: noraworld_com
 github_username:  noraworld
 permalink: /:year/:month/:day
