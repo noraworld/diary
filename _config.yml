@@ -57,3 +57,4 @@ exclude:
   - .gitignore
   - .ruby-version
   - README.md
+  - bin
