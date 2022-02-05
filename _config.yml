@@ -29,9 +29,10 @@ github_username:  noraworld
 permalink: /:year/:month/:day
 
 # Build settings
-theme: minima
+remote_theme: daattali/beautiful-jekyll
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
 
 timezone: Asia/Tokyo
 
