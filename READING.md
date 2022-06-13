@@ -1,5 +1,6 @@
 | Title | Start Date | End Date |
 | --- | :---: | :---: |
+| だんな様はひろゆき | 2022/06/13 | |
 | [転生したらスライムだった件 20 コミック](https://www.amazon.co.jp/gp/product/B09TDRVKJ6) | 2022/05/17 | |
 | [転生したらスライムだった件 19 コミック](https://www.amazon.co.jp/gp/product/B09MQ9MV9C) | 2022/05/17 | 2022/05/17 |
 | [消したくても消せない嫉妬・劣等感を一瞬で消す方法](https://www.amazon.co.jp/gp/product/B07DFFFDBD) | 2022/05/14 | 2022/05/16 |
