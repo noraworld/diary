@@ -1,9 +1,14 @@
+---
+layout: page
+title: Reading
+permalink: /reading
 # MEMO
 #   Amazon のリンクはつけなくても良い
 #   リンク入れるのがめんどくさくなるほうが良くない
 #   リンクからあとからつけることもできるし
 #
 #   空欄になっている部分は『忘れた』
+---
 
 | Title | Start Date | End Date |
 | --- | :---: | :---: |
