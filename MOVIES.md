@@ -12,7 +12,7 @@ permalink: /movies
 
 | Title | Start Date | End Date |
 | --- | :---: | :---: |
-| SPY × FAMILY | 2022/06/22 | |
+| SPY × FAMILY | 2022/06/22 | 2022/07/05 |
 | 五等分の花嫁 ∮∮ | | 2022/06/22 |
 | 五等分の花嫁 |
 | その着せ替え人形は恋をする |
