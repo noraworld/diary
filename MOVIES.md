@@ -12,6 +12,7 @@ permalink: /movies
 
 | Title | Start Date | End Date |
 | --- | :---: | :---: |
+| 明日ちゃんのセーラー服 | | 2022/07/22 |
 | Bubble | 2022/07/21 | 2022/07/21 |
 | Spirited Away | | |
 | SPY × FAMILY | 2022/06/22 | 2022/07/05 |
