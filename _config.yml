@@ -59,3 +59,4 @@ exclude:
   - .ruby-version
   - README.md
   - bin
+  - .git-fetch-last-update
