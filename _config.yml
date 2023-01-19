@@ -22,10 +22,15 @@ title: Noraworld Diary
 # email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   昔人もすなる日記といふものを、我もしてみむとてするなり。
+
+# GitHub Pages for the future
 # baseurl: "/diary" # the subpath of your site, e.g. /blog
-baseurl: "" # for an internal server on my Raspberry Pi
 # url: "https://noraworld.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-url: "http://diary.test" # for an internal server on my Raspberry Pi
+
+# An internal server on my Raspberry Pi
+baseurl: ""
+url: "http://diary.test"
+
 twitter_username: noraworld_com
 github_username:  noraworld
 permalink: /:year/:month/:day
