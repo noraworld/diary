@@ -35,6 +35,9 @@ twitter_username: noraworld_com
 github_username:  noraworld
 permalink: /:year/:month/:day
 
+paginate: 30
+paginate_path: /page/:num
+
 # Build settings
 remote_theme: daattali/beautiful-jekyll
 plugins:
