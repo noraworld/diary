@@ -70,3 +70,4 @@ exclude:
   - README.md
   - bin
   - .git-fetch-last-update
+  - TEMPLATES.md
