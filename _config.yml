@@ -71,3 +71,8 @@ exclude:
   - bin
   - .git-fetch-last-update
   - TEMPLATES.md
+
+# private diary for local network
+collections:
+  private:
+    output: true
