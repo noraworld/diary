@@ -70,6 +70,8 @@ exclude:
   - README.md
   - bin
   - .git-fetch-last-update
+  - _private/.git-fetch-last-update
+  - _private/.git/
   - TEMPLATES.md
 
 # private diary for local network
