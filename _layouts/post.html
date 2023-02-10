@@ -13,7 +13,7 @@ layout: default
 {% endif %}
 
 <!-- https://github.com/daattali/beautiful-jekyll/blob/848d04c90ac87555ccbd00797ce26ee2bd92ecdf/_layouts/post.html#L67-L78 -->
-<ul class="pagination blog-pager">
+<ul class="pagination blog-pager" style="margin-top: 10px;">
   {% if page.previous.url %}
   <li class="page-item previous">
     <a class="page-link" href="{{ page.previous.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title | strip_html | xml_escape}}">&larr; Previous Post</a>
