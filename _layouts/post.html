@@ -12,6 +12,14 @@ layout: default
   </div>
 {% endif %}
 
+<!-- daily report for local network -->
+{% assign daily_report = site.daily_report | where_exp:"item", "item.date == page.date" | first %}
+{% if daily_report %}
+  <div style="background: rgba(113,182,243,0.55); padding: 1px 21px; margin: 30px 0px;">
+    {{ daily_report.content | markdownify }}
+  </div>
+{% endif %}
+
 <!-- https://github.com/daattali/beautiful-jekyll/blob/848d04c90ac87555ccbd00797ce26ee2bd92ecdf/_layouts/post.html#L67-L78 -->
 <ul class="pagination blog-pager" style="margin-top: 10px;">
   {% if page.previous.url %}

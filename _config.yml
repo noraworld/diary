@@ -74,7 +74,9 @@ exclude:
   - _private/.git/
   - TEMPLATES.md
 
-# private diary for local network
+# for local network
 collections:
   private:
+    output: true
+  daily_report:
     output: true
