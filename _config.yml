@@ -72,6 +72,8 @@ exclude:
   - .git-fetch-last-update
   - _private/.git-fetch-last-update
   - _private/.git/
+  - _daily_report/.git-fetch-last-update
+  - _daily_report/.git/
   - TEMPLATES.md
 
 # for local network
