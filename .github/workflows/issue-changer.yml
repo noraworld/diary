@@ -1,0 +1,22 @@
+name: Issue Changer
+
+# 5:00 AM (JST) every day
+on:
+  schedule:
+    - cron: '0 20 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Change issues
+        # Note that the timezone is UTC.
+        run: |
+          gh issue create --title "$(date '+%Y-%m-%d' --date '1 day')" --body ""
+          gh issue list --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {}
+        shell: sh
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
