@@ -15,7 +15,7 @@ jobs:
       - name: Change issues
         # Note that the timezone is UTC.
         run: |
-          gh issue create --title "$(date '+%Y-%m-%d' --date '1 day')" --body ""
+          gh issue create --title "$(date '+%Y-%m-%d' --date '1 day')" --body-file "GH_ISSUE_TEMPLATES.md"
           gh issue list --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {}
         shell: sh
         env:
