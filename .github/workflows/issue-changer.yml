@@ -16,13 +16,18 @@ jobs:
         # Note that the timezone is UTC.
         run: |
           TEMPLATE=$(cat GH_ISSUE_TEMPLATES.md)
-          TO_DO=$(gh issue list \
+          TO_DO_TOMORROW=$(gh issue list \
           --repo noraworld/to-do \
           --label tomorrow \
           --json title,url \
           --template '{{"\r\n"}}{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}')
+          TO_DO_TODAY=$(gh issue list \
+          --repo noraworld/to-do \
+          --label today \
+          --json title,url \
+          --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}')
 
-          gh issue create --title "$(date '+%Y-%m-%d' --date '1 day')" --body "$TEMPLATE$TO_DO"
+          gh issue create --title "$(date '+%Y-%m-%d' --date '1 day')" --body "$TEMPLATE$TO_DO_TOMORROW$TO_DO_TODAY"
           gh issue list --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {}
         shell: sh
         env:
