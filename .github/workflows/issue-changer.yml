@@ -3,7 +3,7 @@ name: Issue Changer
 # 8:00 AM (JST) every day
 on:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 22 * * *'
 
 jobs:
   build:
