@@ -1,0 +1,28 @@
+name: Templates Creator
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Create issues from templates
+        run: |
+          for issue_template in .github/ISSUE_TEMPLATE/*; do
+            gh issue create                                              \
+              --title "$(grep "title: " "$issue_template"                |
+                         sed -e 's/^title: //g'                          |
+                         sed -e "s/[\"\']//g"                            |
+                         sed -e "s/\[{{DATE}}\]/$(date '+%Y-%m-%d')/g")" \
+              --body "$(sed -e '/^---$/,/^---$/d' "$issue_template")"    \
+              --assignee "$(grep "assignees: " "$issue_template"         |
+                            sed -e 's/^assignees: //g'                   |
+                            sed -e "s/[\"\']//g")"
+          done
+        shell: sh
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
