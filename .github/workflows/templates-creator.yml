@@ -12,17 +12,33 @@ jobs:
 
       - name: Create issues from templates
         run: |
+          DIARY_ISSUE_NUMBER=$(gh issue list --repo "noraworld/diary" --limit 1 | awk '{ print $1 }')
+          diary_issue_body=$(gh issue view --repo "noraworld/diary" --json body --jq .body "$DIARY_ISSUE_NUMBER")
+
           for issue_template in .github/ISSUE_TEMPLATE/*; do
-            gh issue create                                              \
-              --title "$(grep "title: " "$issue_template"                |
-                         sed -e 's/^title: //g'                          |
-                         sed -e "s/[\"\']//g"                            |
-                         sed -e "s/\[{{DATE}}\]/$(date '+%Y-%m-%d')/g")" \
-              --body "$(sed -e '/^---$/,/^---$/d' "$issue_template")"    \
-              --assignee "$(grep "assignees: " "$issue_template"         |
-                            sed -e 's/^assignees: //g'                   |
-                            sed -e "s/[\"\']//g")"
+            title=$(grep "title: " "$issue_template"               |
+                    sed -e 's/^title: //g'                         |
+                    sed -e "s/[\"\']//g"                           |
+                    sed -e "s/\[{{DATE}}\]/$(date '+%Y-%m-%d')/g")
+
+            body=$(sed -e '/^---$/,/^---$/d' "$issue_template")
+
+            assignee=$(grep "assignees: " "$issue_template" |
+                       sed -e 's/^assignees: //g'           |
+                       sed -e "s/[\"\']//g")
+
+            url=$(gh issue create           \
+                    --title "$title"        \
+                    --body "$body"          \
+                    --assignee "$assignee")
+
+            display_name=$(echo "$title" | cut -d '_' -f3)
+            # https://chat.openai.com/share/0bb3dd50-70bb-4c09-8396-1f53824c3962
+            escaped_url=$(echo "$url" | sed 's/[\^\$\.\/]/\\&/g')
+            diary_issue_body=$(echo "$diary_issue_body" | sed -E "s/$display_name/\[$display_name\]\($escaped_url\)/g")
           done
+
+          gh issue edit --repo "noraworld/diary" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
         shell: sh
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
