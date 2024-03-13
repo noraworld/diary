@@ -15,6 +15,11 @@ jobs:
       - name: Change issues
         # Note that the timezone is UTC.
         run: |
+          if [ "$(gh issue list --repo "noraworld/diary-templates" | wc -l)" -ne 0 ]; then
+            echo "Some of or all of the diary templates have not been closed yet." >&2
+            exit 1
+          fi
+
           TEMPLATE=$(cat GH_ISSUE_TEMPLATES.md)
           TO_DO_TOMORROW=$(gh issue list \
           --repo noraworld/to-do \
