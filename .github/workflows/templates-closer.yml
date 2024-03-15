@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
   # The time must be BEFORE the current diary is closed and the new one is created.
   # https://github.com/noraworld/diary/blob/main/.github/workflows/issue-changer.yml
-  # schedule:
-  #   - cron: '0 21 * * *'
+  schedule:
+    - cron: '0 21 * * *'
 
 jobs:
   build:
