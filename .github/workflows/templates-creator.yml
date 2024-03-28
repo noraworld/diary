@@ -21,9 +21,9 @@ jobs:
           diary_issue_body=$(gh issue view --repo "noraworld/diary" --json body --jq .body "$DIARY_ISSUE_NUMBER")
           ISSUE_TITLE_LIST=$(gh issue list --json title --jq .[].title)
 
-          if [ "$diary_issue_title" != "$(date '+%Y-%m-%d')" ]; then
+          if [ "$diary_issue_title" != "$(date '+%Y-%m-%d' --date '1 day')" ]; then
             echo "DEBUG: diary issue title: $diary_issue_title" >&2
-            echo "DEBUG: today's date:      $(date '+%Y-%m-%d')" >&2
+            echo "DEBUG: today's date:      $(date '+%Y-%m-%d' --date '1 day')" >&2
             echo "The diary issue title does not match today's date." >&2
             exit 1
           fi
@@ -32,7 +32,7 @@ jobs:
             title=$(grep "title: " "$issue_template"               |
                     sed -e 's/^title: //g'                         |
                     sed -e "s/[\"\']//g"                           |
-                    sed -e "s/\[{{DATE}}\]/$(date '+%Y-%m-%d')/g")
+                    sed -e "s/\[{{DATE}}\]/$(date '+%Y-%m-%d' --date '1 day')/g")
 
             if [ "$(echo "$ISSUE_TITLE_LIST" | grep -c "$title")" -ne 0 ]; then
               echo "It will be skipped because \"$title\" already exists." >&2
