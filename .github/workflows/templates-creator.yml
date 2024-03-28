@@ -19,6 +19,7 @@ jobs:
           DIARY_ISSUE_NUMBER=$(gh issue list --repo "noraworld/diary" --limit 1 | awk '{ print $1 }')
           diary_issue_title=$(gh issue view --repo "noraworld/diary" --json title --jq .title "$DIARY_ISSUE_NUMBER")
           diary_issue_body=$(gh issue view --repo "noraworld/diary" --json body --jq .body "$DIARY_ISSUE_NUMBER")
+          ISSUE_TITLE_LIST=$(gh issue list --json title --jq .[].title)
 
           if [ "$diary_issue_title" != "$(date '+%Y-%m-%d')" ]; then
             echo "DEBUG: diary issue title: $diary_issue_title" >&2
@@ -32,6 +33,11 @@ jobs:
                     sed -e 's/^title: //g'                         |
                     sed -e "s/[\"\']//g"                           |
                     sed -e "s/\[{{DATE}}\]/$(date '+%Y-%m-%d')/g")
+
+            if [ "$(echo "$ISSUE_TITLE_LIST" | grep -c "$title")" -ne 0 ]; then
+              echo "It will be skipped because \"$title\" already exists." >&2
+              continue
+            fi
 
             body=$(sed -e '/^---$/,/^---$/d' "$issue_template")
 
