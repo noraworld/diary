@@ -15,7 +15,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v2
 
-      - name: Add done label to open issues
+      - name: Add done label to close issues
         run: |
           gh issue list | awk '{ print $1 }' | xargs -I {} gh issue edit {} --add-label "done"
         shell: sh
