@@ -1,7 +1,9 @@
 name: Issue Changer
 
-# 8:00 AM (JST) every day
 on:
+  # It is fine to perform it manually. Because it is idempotent, it does nothing if the diary is already created.
+  workflow_dispatch:
+  # 8:00 AM (JST) every day
   schedule:
     - cron: '0 22 * * *'
 
@@ -20,19 +22,42 @@ jobs:
             exit 1
           fi
 
-          TEMPLATE=$(cat GH_ISSUE_TEMPLATES.md)
-          TO_DO_TOMORROW=$(gh issue list \
-          --repo noraworld/to-do \
-          --label tomorrow \
-          --json title,url \
+          ISSUE_TEMPLATE=".github/ISSUE_TEMPLATE/general.md"
+          ISSUE_TITLE_LIST=$(gh issue list --json title --jq .[].title)
+
+          title=$(grep "title: " "$ISSUE_TEMPLATE"                              |
+                  sed -e 's/^title: //g'                                        |
+                  sed -e "s/[\"\']//g"                                          |
+                  sed -e "s/\[{{DATE}}\]/$(date '+%Y-%m-%d' --date '1 day')/g")
+
+          if [ "$(echo "$ISSUE_TITLE_LIST" | grep -c "$title")" -ne 0 ]; then
+            echo "It will be skipped because \"$title\" already exists." >&2
+            exit 1
+          fi
+
+          body=$(sed -e '/^---$/,/^---$/d' "$ISSUE_TEMPLATE")
+
+          TO_DO_TOMORROW=$(gh issue list                                                  \
+          --repo noraworld/to-do                                                          \
+          --label tomorrow                                                                \
+          --json title,url                                                                \
           --template '{{"\r\n"}}{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}')
-          TO_DO_TODAY=$(gh issue list \
-          --repo noraworld/to-do \
-          --label today \
-          --json title,url \
+
+          TO_DO_TODAY=$(gh issue list                                           \
+          --repo noraworld/to-do                                                \
+          --label today                                                         \
+          --json title,url                                                      \
           --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}')
 
-          gh issue create --title "$(date '+%Y-%m-%d' --date '1 day')" --body "$TEMPLATE$TO_DO_TOMORROW$TO_DO_TODAY"
+          assignee=$(grep "assignees: " "$ISSUE_TEMPLATE" |
+                     sed -e 's/^assignees: //g'           |
+                     sed -e "s/[\"\']//g")
+
+          url=$(gh issue create                             \
+                  --title "$title"                          \
+                  --body "$body$TO_DO_TOMORROW$TO_DO_TODAY" \
+                  --assignee "$assignee")
+
           gh issue list --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {}
         shell: sh
         env:
