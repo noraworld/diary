@@ -37,11 +37,11 @@ jobs:
 
           body=$(sed -e '/^---$/,/^---$/d' "$ISSUE_TEMPLATE")
 
-          TO_DO_TOMORROW=$(gh issue list                                                  \
-          --repo noraworld/to-do                                                          \
-          --label tomorrow                                                                \
-          --json title,url                                                                \
-          --template '{{"\r\n"}}{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}')
+          TO_DO_TOMORROW=$(gh issue list                                                        \
+          --repo noraworld/to-do                                                                \
+          --label tomorrow                                                                      \
+          --json title,url                                                                      \
+          --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}{{"\r\n"}}' | tac)
 
           TO_DO_TODAY=$(gh issue list                                           \
           --repo noraworld/to-do                                                \
