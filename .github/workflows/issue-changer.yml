@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   # 8:00 AM (JST) every day
   schedule:
-    - cron: '0 22 * * *'
+    - cron: '0 23 * * *'
 
 jobs:
   build:
