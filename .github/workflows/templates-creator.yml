@@ -6,7 +6,7 @@ on:
   # The time must be AFTER the previous diary is closed and the new one is created.
   # https://github.com/noraworld/diary/blob/main/.github/workflows/issue-changer.yml
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '30 23 * * *'
 
 jobs:
   build:
