@@ -43,11 +43,11 @@ jobs:
           --json title,url                                                                      \
           --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}{{"\r\n"}}' | tac)
 
-          TO_DO_TODAY=$(gh issue list                                           \
-          --repo noraworld/to-do                                                \
-          --label today                                                         \
-          --json title,url                                                      \
-          --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}')
+          TO_DO_TODAY=$(gh issue list                                                     \
+          --repo noraworld/to-do                                                          \
+          --label today                                                                   \
+          --json title,url                                                                \
+          --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}{{"\r\n"}}')
 
           assignee=$(grep "assignees: " "$ISSUE_TEMPLATE" |
                      sed -e 's/^assignees: //g'           |
@@ -55,7 +55,7 @@ jobs:
 
           url=$(gh issue create                             \
                   --title "$title"                          \
-                  --body "$body$TO_DO_TOMORROW$TO_DO_TODAY" \
+                  --body "$TO_DO_TODAY$TO_DO_TOMORROW$body" \
                   --assignee "$assignee")
 
           gh issue list --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {}
