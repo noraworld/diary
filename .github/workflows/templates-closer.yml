@@ -17,6 +17,17 @@ jobs:
 
       - name: Add done label to close issues
         run: |
+          issue_templates_title=$(gh issue list --json title --jq .[].title)
+          issue_templates_count=$(echo "$issue_templates_title" | wc -l)
+          issue_templates_matched_count=$(echo "$issue_templates_title" | grep -c "$(date '+%Y-%m-%d')")
+
+          if [ "$issue_templates_count" != "$issue_templates_matched_count" ]; then
+            echo "DEBUG: the number of diary templates:         $issue_templates_count" >&2
+            echo "DEBUG: the number of matched diary templates: $issue_templates_matched_count" >&2
+            echo "Some of or all of the diary templates issue title does not match yesterday's date." >&2
+            exit 1
+          fi
+
           gh issue list | awk '{ print $1 }' | xargs -I {} gh issue edit {} --add-label "done"
         shell: sh
         env:
