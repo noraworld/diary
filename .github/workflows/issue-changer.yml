@@ -55,7 +55,7 @@ jobs:
 
           url=$(gh issue create                             \
                   --title "$title"                          \
-                  --body "$TO_DO_TODAY$TO_DO_TOMORROW$body" \
+                  --body "$body$TO_DO_TOMORROW$TO_DO_TODAY" \
                   --assignee "$assignee")
 
           gh issue list --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {}
