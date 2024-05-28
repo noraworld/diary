@@ -37,15 +37,9 @@ jobs:
 
           body=$(sed -e '/^---$/,/^---$/d' "$ISSUE_TEMPLATE")
 
-          TO_DO_TOMORROW=$(gh issue list                                              \
+          TO_DO=$(gh issue list                                                       \
           --repo noraworld/to-do                                                      \
-          --label tomorrow                                                            \
-          --json title,url                                                            \
-          --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}' | tac)
-
-          TO_DO_TODAY=$(gh issue list                                                 \
-          --repo noraworld/to-do                                                      \
-          --label today                                                               \
+          --search "label:today,tomorrow"                                             \
           --json title,url                                                            \
           --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}' | tac)
 
@@ -53,9 +47,9 @@ jobs:
                      sed -e 's/^assignees: //g'           |
                      sed -e "s/[\"\']//g")
 
-          url=$(gh issue create                             \
-                  --title "$title"                          \
-                  --body "$body$TO_DO_TOMORROW$TO_DO_TODAY" \
+          url=$(gh issue create           \
+                  --title "$title"        \
+                  --body "$body$TO_DO"    \
                   --assignee "$assignee")
 
           gh issue list --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {}
