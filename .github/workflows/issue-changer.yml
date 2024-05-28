@@ -37,17 +37,17 @@ jobs:
 
           body=$(sed -e '/^---$/,/^---$/d' "$ISSUE_TEMPLATE")
 
-          TO_DO_TOMORROW=$(gh issue list                                                        \
-          --repo noraworld/to-do                                                                \
-          --label tomorrow                                                                      \
-          --json title,url                                                                      \
-          --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}{{"\r\n"}}' | tac)
+          TO_DO_TOMORROW=$(gh issue list                                              \
+          --repo noraworld/to-do                                                      \
+          --label tomorrow                                                            \
+          --json title,url                                                            \
+          --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}' | tac)
 
-          TO_DO_TODAY=$(gh issue list                                                     \
-          --repo noraworld/to-do                                                          \
-          --label today                                                                   \
-          --json title,url                                                                \
-          --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}{{"\r\n"}}')
+          TO_DO_TODAY=$(gh issue list                                                 \
+          --repo noraworld/to-do                                                      \
+          --label today                                                               \
+          --json title,url                                                            \
+          --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}' | tac)
 
           assignee=$(grep "assignees: " "$ISSUE_TEMPLATE" |
                      sed -e 's/^assignees: //g'           |
