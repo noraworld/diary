@@ -43,13 +43,20 @@ jobs:
                   --json title,url                                                                      \
                   --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}{{"\r\n"}}' | tac)
 
+          if [ "$(echo "$TO_DO" | tr -d "\n" | tr -d "\r" | tr -d "\r\n")" = "" ]; then
+            processed_body="$body"
+          else
+            processed_body=$(echo "$body" | sed -E '/\* 特になし/{N;d;}')
+            processed_body="$processed_body$TO_DO"
+          fi
+
           assignee=$(grep "assignees: " "$ISSUE_TEMPLATE" |
                      sed -e 's/^assignees: //g'           |
                      sed -e "s/[\"\']//g")
 
-          url=$(gh issue create           \
-                  --title "$title"        \
-                  --body "$body$TO_DO"    \
+          url=$(gh issue create            \
+                  --title "$title"         \
+                  --body "$processed_body" \
                   --assignee "$assignee")
 
           gh issue list --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {}
