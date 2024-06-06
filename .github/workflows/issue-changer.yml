@@ -37,11 +37,11 @@ jobs:
 
           body=$(sed -e '/^---$/,/^---$/d' "$ISSUE_TEMPLATE")
 
-          TO_DO=$(gh issue list                                                                 \
-          --repo noraworld/to-do                                                                \
-          --search "label:today,tomorrow"                                                       \
-          --json title,url                                                                      \
-          --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}{{"\r\n"}}' | tac)
+          TO_DO=$(gh issue list                                                                         \
+                  --repo noraworld/to-do                                                                \
+                  --search "label:today,tomorrow"                                                       \
+                  --json title,url                                                                      \
+                  --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}{{"\r\n"}}' | tac)
 
           assignee=$(grep "assignees: " "$ISSUE_TEMPLATE" |
                      sed -e 's/^assignees: //g'           |
