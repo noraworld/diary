@@ -45,7 +45,7 @@ jobs:
 
           processed_body="$body"
           if [ "$(echo "$TO_DO" | tr -d "\n" | tr -d "\r" | tr -d "\r\n")" != "" ]; then
-            processed_body=$(echo "$processed_body" | sed -E '/\* 特になし/{N;d;}')
+            processed_body=$(echo "$processed_body" | sed -E 's/\* 特になし//g')
             processed_body="$processed_body$TO_DO"
           fi
 
