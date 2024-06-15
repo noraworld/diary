@@ -44,10 +44,10 @@ jobs:
                        sed -e 's/^assignees: //g'           |
                        sed -e "s/[\"\']//g")
 
-            url=$(gh issue create           \
+            url=$(gh issue create                      \
                     --repo "noraworld/diary-templates" \
-                    --title "$title"        \
-                    --body "$body"          \
+                    --title "$title"                   \
+                    --body "$body"                     \
                     --assignee "$assignee")
 
             display_name=$(echo "$title" | cut -d '_' -f3)
