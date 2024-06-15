@@ -2,7 +2,8 @@ name: Issue Refresh Batch
 
 on:
   workflow_dispatch:
-  # TODO: cron
+  schedule:
+    - cron: '0 23 * * *'
 
 jobs:
   templates-closer:
