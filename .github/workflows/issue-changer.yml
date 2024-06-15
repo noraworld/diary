@@ -14,23 +14,17 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Change issues
-        # Note that the timezone is UTC.
         run: |
           if [ "$(gh issue list --repo "noraworld/diary-templates" | wc -l)" -ne 0 ]; then
             echo "Some of or all of the diary templates have not been closed yet." >&2
             exit 1
           fi
 
-          ### ISSUE_TEMPLATE=".github/ISSUE_TEMPLATE/general.md"
           ISSUE_TEMPLATE=$(gh api "/repos/noraworld/diary/contents/.github/ISSUE_TEMPLATE/general.md" \
                            --jq .content                                                              |
                            base64 --decode)
           ISSUE_TITLE_LIST=$(gh issue list --repo "noraworld/diary" --json title --jq .[].title)
 
-          ### title=$(grep "title: " "$ISSUE_TEMPLATE"                              |
-          ###         sed -e 's/^title: //g'                                        |
-          ###         sed -e "s/[\"\']//g"                                          |
-          ###         sed -e "s/\[{{DATE}}\]/$(date '+%Y-%m-%d' --date '1 day')/g")
           title=$(echo "$ISSUE_TEMPLATE"                                        |
                   grep "title: "                                                |
                   sed -e 's/^title: //g'                                        |
@@ -42,7 +36,6 @@ jobs:
             exit 1
           fi
 
-          ### body=$(sed -e '/^---$/,/^---$/d' "$ISSUE_TEMPLATE")
           body=$(echo "$ISSUE_TEMPLATE" | sed -e '/^---$/,/^---$/d')
 
           TO_DO=$(gh issue list                                                                         \
@@ -57,9 +50,6 @@ jobs:
             processed_body="$processed_body$TO_DO"
           fi
 
-          ### assignee=$(grep "assignees: " "$ISSUE_TEMPLATE" |
-          ###            sed -e 's/^assignees: //g'           |
-          ###            sed -e "s/[\"\']//g")
           assignee=$(echo "$ISSUE_TEMPLATE" | grep "assignees: " |
                      sed -e 's/^assignees: //g'                  |
                      sed -e "s/[\"\']//g")
@@ -70,8 +60,11 @@ jobs:
                   --body "$processed_body" \
                   --assignee "$assignee")
 
-          gh issue list --repo "noraworld/diary" --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {} --repo "noraworld/diary"
+          gh issue list                  \
+            --repo "noraworld/diary"     \
+            --search $(date '+%Y-%m-%d') |
+            awk '{ print $1 }'           |
+            xargs -I {} gh issue close {} --repo "noraworld/diary"
         shell: sh
         env:
-          ### GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_TOKEN: ${{ secrets.token }}
