@@ -2,10 +2,14 @@ name: Issue Changer
 
 on:
   # It is fine to perform it manually. Because it is idempotent, it does nothing if the diary is already created.
-  workflow_dispatch:
+  ### workflow_dispatch:
   # 8:00 AM (JST) every day
-  schedule:
-    - cron: '0 23 * * *'
+  ### schedule:
+  ###   - cron: '0 23 * * *'
+  workflow_call:
+    secrets:
+      token:
+        required: true
 
 jobs:
   build:
@@ -61,4 +65,5 @@ jobs:
           gh issue list --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {}
         shell: sh
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          ### GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.token }}
