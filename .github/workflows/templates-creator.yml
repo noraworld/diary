@@ -2,11 +2,15 @@ name: Templates Creator
 
 on:
   # It is fine to perform it manually. Because it is idempotent, it does nothing if there is already a target issue.
-  workflow_dispatch:
+  ### workflow_dispatch:
   # The time must be AFTER the previous diary is closed and the new one is created.
   # https://github.com/noraworld/diary/blob/main/.github/workflows/issue-changer.yml
-  schedule:
-    - cron: '30 23 * * *'
+  ### schedule:
+  ###   - cron: '30 23 * * *'
+  workflow_call:
+    secrets:
+      token:
+        required: true
 
 jobs:
   build:
@@ -60,4 +64,5 @@ jobs:
           gh issue edit --repo "noraworld/diary" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
         shell: sh
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          ### GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.token }}
