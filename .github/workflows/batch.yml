@@ -1,0 +1,41 @@
+name: Issue Refresh Batch
+
+on:
+  workflow_dispatch:
+  # TODO: cron
+
+jobs:
+  templates-closer:
+    uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
+  wait-for-templates-closed:
+    needs: templates-closer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Check if all of the diary templates have successfully been closed
+        run: |
+          # TODO: You might want to implement a timeout error.
+          while [ "$(gh issue list --repo "noraworld/diary-templates" | wc -l)" -ne 0 ]; do
+            # echo "Some of or all of the diary templates have not been closed yet." >&2
+            sleep 15
+          done
+        shell: sh
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  issue-changer:
+    needs: wait-for-templates-closed
+    uses: noraworld/diary/.github/workflows/issue-changer.yml@main
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
+  templates-creator:
+    needs: issue-changer
+    uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
