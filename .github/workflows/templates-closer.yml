@@ -26,7 +26,10 @@ jobs:
             exit 1
           fi
 
-          gh issue list --repo "noraworld/diary-templates" | awk '{ print $1 }' | xargs -I {} gh issue edit {} --repo "noraworld/diary-templates" --add-label "done"
+          gh issue list                        \
+            --repo "noraworld/diary-templates" |
+            awk '{ print $1 }'                 |
+            xargs -I {} gh issue edit {} --repo "noraworld/diary-templates" --add-label "done"
         shell: sh
         env:
           GH_TOKEN: ${{ secrets.token }}
