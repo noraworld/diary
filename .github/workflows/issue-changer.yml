@@ -27,7 +27,7 @@ jobs:
           fi
 
           ISSUE_TEMPLATE=".github/ISSUE_TEMPLATE/general.md"
-          ISSUE_TITLE_LIST=$(gh issue list --json title --jq .[].title)
+          ISSUE_TITLE_LIST=$(gh issue list --repo "noraworld/diary" --json title --jq .[].title)
 
           title=$(grep "title: " "$ISSUE_TEMPLATE"                              |
                   sed -e 's/^title: //g'                                        |
@@ -58,11 +58,12 @@ jobs:
                      sed -e "s/[\"\']//g")
 
           url=$(gh issue create            \
+                  --repo "noraworld/diary" \
                   --title "$title"         \
                   --body "$processed_body" \
                   --assignee "$assignee")
 
-          gh issue list --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {}
+          gh issue list --repo "noraworld/diary" --search $(date '+%Y-%m-%d') | awk '{ print $1 }' | xargs -I {} gh issue close {} --repo "noraworld/diary"
         shell: sh
         env:
           ### GH_TOKEN: ${{ secrets.GH_TOKEN }}
