@@ -24,7 +24,7 @@ jobs:
           DIARY_ISSUE_NUMBER=$(gh issue list --repo "noraworld/diary" --limit 1 | awk '{ print $1 }')
           diary_issue_title=$(gh issue view --repo "noraworld/diary" --json title --jq .title "$DIARY_ISSUE_NUMBER")
           diary_issue_body=$(gh issue view --repo "noraworld/diary" --json body --jq .body "$DIARY_ISSUE_NUMBER")
-          ISSUE_TITLE_LIST=$(gh issue list --json title --jq .[].title)
+          ISSUE_TITLE_LIST=$(gh issue list --repo "noraworld/diary-templates" --json title --jq .[].title)
 
           if [ "$diary_issue_title" != "$(date '+%Y-%m-%d' --date '1 day')" ]; then
             echo "DEBUG: diary issue title: $diary_issue_title" >&2
@@ -51,6 +51,7 @@ jobs:
                        sed -e "s/[\"\']//g")
 
             url=$(gh issue create           \
+                    --repo "noraworld/diary-templates" \
                     --title "$title"        \
                     --body "$body"          \
                     --assignee "$assignee")
