@@ -2,6 +2,9 @@ name: Issue Changer
 
 on:
   workflow_call:
+    inputs:
+      timezone:
+        required: true
     secrets:
       token:
         required: true
@@ -29,7 +32,7 @@ jobs:
                   grep "title: "                                                |
                   sed -e 's/^title: //g'                                        |
                   sed -e "s/[\"\']//g"                                          |
-                  sed -e "s/\[{{DATE}}\]/$(date '+%Y-%m-%d' --date '1 day')/g")
+                  sed -e "s/\[{{DATE}}\]/$(date '+%Y-%m-%d' --date '0 day')/g")
 
           if [ "$(echo "$ISSUE_TITLE_LIST" | grep -c "$title")" -ne 0 ]; then
             echo "It will be skipped because \"$title\" already exists." >&2
@@ -60,11 +63,12 @@ jobs:
                   --body "$processed_body" \
                   --assignee "$assignee")
 
-          gh issue list                  \
-            --repo "noraworld/diary"     \
-            --search $(date '+%Y-%m-%d') |
-            awk '{ print $1 }'           |
+          gh issue list                                  \
+            --repo "noraworld/diary"                     \
+            --search $(date '+%Y-%m-%d' --date '-1 day') |
+            awk '{ print $1 }'                           |
             xargs -I {} gh issue close {} --repo "noraworld/diary"
         shell: sh
         env:
           GH_TOKEN: ${{ secrets.token }}
+          TZ: ${{ github.event.inputs.timezone }}
