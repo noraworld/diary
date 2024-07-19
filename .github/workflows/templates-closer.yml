@@ -2,6 +2,9 @@ name: Templates Closer
 
 on:
   workflow_call:
+    inputs:
+      timezone:
+        required: true
     secrets:
       token:
         required: true
@@ -24,7 +27,7 @@ jobs:
                                           --repo "noraworld/diary-templates"     \
                                           --json title                           \
                                           --jq .[].title                         |
-                                          grep -c "$(date '+%Y-%m-%d')" || true)
+                                          grep -c "$(date '+%Y-%m-%d' --date '-1 day')" || true)
 
           if [ "$issue_templates_count" != "$issue_templates_matched_count" ]; then
             echo "DEBUG: the number of diary templates:         $issue_templates_count" >&2
@@ -40,3 +43,4 @@ jobs:
         shell: sh
         env:
           GH_TOKEN: ${{ secrets.token }}
+          TZ: ${{ github.event.inputs.timezone }}
