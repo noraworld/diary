@@ -2,6 +2,16 @@ name: Issue Refresh Batch
 
 on:
   workflow_dispatch:
+    inputs:
+      timezone:
+        required: true
+        description: 'Timezone'
+        type: choice
+        options:
+          - 'Etc/Universal'
+          - 'Asia/Tokyo'
+          - 'Australia/Sydney'
+        default: 'Asia/Tokyo'
   schedule:
     # - cron: '0 23 * * *'
     - cron: '30 23 * * *'
@@ -9,6 +19,8 @@ on:
 jobs:
   templates-closer:
     uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
+    with:
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
@@ -39,11 +51,15 @@ jobs:
   issue-changer:
     needs: wait-for-templates-closed
     uses: noraworld/diary/.github/workflows/issue-changer.yml@main
+    with:
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
   templates-creator:
     needs: issue-changer
     uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
+    with:
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
