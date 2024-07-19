@@ -5,6 +5,7 @@ on:
     inputs:
       timezone:
         required: true
+        type: string
     secrets:
       token:
         required: true
