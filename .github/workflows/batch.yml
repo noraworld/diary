@@ -13,9 +13,7 @@ on:
           - 'Australia/Sydney'
         default: 'Asia/Tokyo'
   schedule:
-    # - cron: '0 23 * * *'
-    # - cron: '30 23 * * *'
-    - cron: '5 3 * * *'
+    - cron: '30 23 * * *'
 
 jobs:
   templates-closer:
