@@ -20,7 +20,7 @@ jobs:
   templates-closer:
     uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
     with:
-      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+      timezone: ${{ github.event.inputs.timezone || 'test' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
