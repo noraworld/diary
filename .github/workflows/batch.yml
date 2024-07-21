@@ -12,7 +12,7 @@ on:
           - 'Asia/Tokyo'
           - 'Australia/Sydney'
           - ''
-        default: 'test2'
+        default: 'Australia/Sydney'
   schedule:
     - cron: '30 23 * * *'
 
