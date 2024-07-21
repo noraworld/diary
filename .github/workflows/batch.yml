@@ -18,8 +18,8 @@ on:
 jobs:
   templates-closer:
     uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
-    with:
-      timezone: ${{ 'test' }}
+    # with:
+    #   timezone: ${{ 'test' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
