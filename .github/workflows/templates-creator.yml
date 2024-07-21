@@ -3,6 +3,12 @@ name: Templates Creator
 on:
   workflow_call:
     inputs:
+      main_repo:
+        required: true
+        type: string
+      template_repo:
+        required: true
+        type: string
       timezone:
         required: true
         type: string
@@ -19,10 +25,10 @@ jobs:
 
       - name: Create issues from templates
         run: |
-          DIARY_ISSUE_NUMBER=$(gh issue list --repo "noraworld/diary" --limit 1 | awk '{ print $1 }')
-          diary_issue_title=$(gh issue view --repo "noraworld/diary" --json title --jq .title "$DIARY_ISSUE_NUMBER")
-          diary_issue_body=$(gh issue view --repo "noraworld/diary" --json body --jq .body "$DIARY_ISSUE_NUMBER")
-          ISSUE_TITLE_LIST=$(gh issue list --repo "noraworld/diary-templates" --json title --jq .[].title)
+          DIARY_ISSUE_NUMBER=$(gh issue list --repo "$MAIN_REPO" --limit 1 | awk '{ print $1 }')
+          diary_issue_title=$(gh issue view --repo "$MAIN_REPO" --json title --jq .title "$DIARY_ISSUE_NUMBER")
+          diary_issue_body=$(gh issue view --repo "$MAIN_REPO" --json body --jq .body "$DIARY_ISSUE_NUMBER")
+          ISSUE_TITLE_LIST=$(gh issue list --repo "$TEMPLATE_REPO" --json title --jq .[].title)
 
           if [ "$diary_issue_title" != "$(date '+%Y-%m-%d' --date '0 day')" ]; then
             echo "DEBUG: diary issue title: $diary_issue_title" >&2
@@ -48,10 +54,10 @@ jobs:
                        sed -e 's/^assignees: //g'           |
                        sed -e "s/[\"\']//g")
 
-            url=$(gh issue create                      \
-                    --repo "noraworld/diary-templates" \
-                    --title "$title"                   \
-                    --body "$body"                     \
+            url=$(gh issue create           \
+                    --repo "$TEMPLATE_REPO" \
+                    --title "$title"        \
+                    --body "$body"          \
                     --assignee "$assignee")
 
             display_name=$(echo "$title" | cut -d '_' -f3)
@@ -60,8 +66,10 @@ jobs:
             diary_issue_body=$(echo "$diary_issue_body" | sed -E "s/$display_name/\[$display_name\]\($escaped_url\)/g")
           done
 
-          gh issue edit --repo "noraworld/diary" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
+          gh issue edit --repo "$MAIN_REPO" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
         shell: sh
         env:
           GH_TOKEN: ${{ secrets.token }}
+          MAIN_REPO: ${{ inputs.main_repo }}
+          TEMPLATE_REPO: ${{ inputs.template_repo }}
           TZ: ${{ inputs.timezone }}
