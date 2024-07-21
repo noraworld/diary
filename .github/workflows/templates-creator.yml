@@ -64,4 +64,4 @@ jobs:
         shell: sh
         env:
           GH_TOKEN: ${{ secrets.token }}
-          TZ: ${{ github.event.inputs.timezone }}
+          TZ: ${{ inputs.timezone }}
