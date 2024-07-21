@@ -3,6 +3,12 @@ name: Issue Changer
 on:
   workflow_call:
     inputs:
+      main_repo:
+        required: true
+        type: string
+      template_repo:
+        required: true
+        type: string
       timezone:
         required: true
         type: string
@@ -19,15 +25,15 @@ jobs:
 
       - name: Change issues
         run: |
-          if [ "$(gh issue list --repo "noraworld/diary-templates" | wc -l)" -ne 0 ]; then
+          if [ "$(gh issue list --repo "$TEMPLATE_REPO" | wc -l)" -ne 0 ]; then
             echo "Some of or all of the diary templates have not been closed yet." >&2
             exit 1
           fi
 
-          ISSUE_TEMPLATE=$(gh api "/repos/noraworld/diary/contents/.github/ISSUE_TEMPLATE/general.md" \
-                           --jq .content                                                              |
+          ISSUE_TEMPLATE=$(gh api "/repos/$MAIN_REPO/contents/.github/ISSUE_TEMPLATE/general.md" \
+                           --jq .content                                                         |
                            base64 --decode)
-          ISSUE_TITLE_LIST=$(gh issue list --repo "noraworld/diary" --json title --jq .[].title)
+          ISSUE_TITLE_LIST=$(gh issue list --repo "$MAIN_REPO" --json title --jq .[].title)
 
           title=$(echo "$ISSUE_TEMPLATE"                                        |
                   grep "title: "                                                |
@@ -41,35 +47,40 @@ jobs:
           fi
 
           body=$(echo "$ISSUE_TEMPLATE" | sed -e '/^---$/,/^---$/d')
-
-          TO_DO=$(gh issue list                                                                         \
-                  --repo noraworld/to-do                                                                \
-                  --search "label:today,tomorrow"                                                       \
-                  --json title,url                                                                      \
-                  --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}{{"\r\n"}}' | tac)
-
           processed_body="$body"
-          if [ "$(echo "$TO_DO" | tr -d "\n" | tr -d "\r" | tr -d "\r\n")" != "" ]; then
-            processed_body=$(echo "$processed_body" | sed -E 's/\* 特になし//g')
-            processed_body="$processed_body$TO_DO"
+
+          if [ "$MAIN_REPO" = "noraworld/diary" ]; then
+            TO_DO=$(gh issue list                                                                         \
+                    --repo noraworld/to-do                                                                \
+                    --search "label:today,tomorrow"                                                       \
+                    --json title,url                                                                      \
+                    --template '{{range.}}* [ ] [{{.title}}]({{.url}}){{"\r\n"}}{{end}}{{"\r\n"}}' | tac)
+
+            if [ "$(echo "$TO_DO" | tr -d "\n" | tr -d "\r" | tr -d "\r\n")" != "" ]; then
+              processed_body=$(echo "$processed_body" | sed -E 's/\* 特になし//g')
+              processed_body="$processed_body$TO_DO"
+            fi
           fi
 
-          assignee=$(echo "$ISSUE_TEMPLATE" | grep "assignees: " |
-                     sed -e 's/^assignees: //g'                  |
+          assignee=$(echo "$ISSUE_TEMPLATE"     |
+                     grep "assignees: "         |
+                     sed -e 's/^assignees: //g' |
                      sed -e "s/[\"\']//g")
 
           url=$(gh issue create            \
-                  --repo "noraworld/diary" \
+                  --repo "$MAIN_REPO"      \
                   --title "$title"         \
                   --body "$processed_body" \
                   --assignee "$assignee")
 
           gh issue list                                  \
-            --repo "noraworld/diary"                     \
+            --repo "$MAIN_REPO"                          \
             --search $(date '+%Y-%m-%d' --date '-1 day') |
             awk '{ print $1 }'                           |
-            xargs -I {} gh issue close {} --repo "noraworld/diary"
+            xargs -I {} gh issue close {} --repo "$MAIN_REPO"
         shell: sh
         env:
           GH_TOKEN: ${{ secrets.token }}
+          MAIN_REPO: ${{ inputs.main_repo }}
+          TEMPLATE_REPO: ${{ inputs.template_repo }}
           TZ: ${{ inputs.timezone }}
