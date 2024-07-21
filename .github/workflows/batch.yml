@@ -12,7 +12,7 @@ on:
           - 'Asia/Tokyo'
           - 'Australia/Sydney'
           - ''
-        default: 'Etc/Universal'
+        default: 'Asia/Tokyo'
   schedule:
     - cron: '30 23 * * *'
 
@@ -52,7 +52,7 @@ jobs:
     needs: wait-for-templates-closed
     uses: noraworld/diary/.github/workflows/issue-changer.yml@main
     with:
-      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+      timezone: ${{ github.event.inputs.timezone }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
@@ -60,6 +60,6 @@ jobs:
     needs: issue-changer
     uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
     with:
-      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+      timezone: ${{ github.event.inputs.timezone }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
