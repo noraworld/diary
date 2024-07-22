@@ -13,8 +13,8 @@ on:
           - 'Asia/Tokyo'
           - 'Australia/Sydney'
           - ''
-        default: 'Asia/Tokyo'
-        # default: ''
+        # default: 'Asia/Tokyo'
+        default: ''
   schedule:
     - cron: '30 23 * * *'
 
@@ -23,7 +23,7 @@ jobs:
     uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
     with:
       repo: noraworld/diary-templates
-      timezone: ${{ github.event.inputs.timezones || 'test' }}
+      timezone: ${{ github.event.inputs.timezone || 'test' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
