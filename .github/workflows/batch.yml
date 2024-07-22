@@ -13,6 +13,10 @@ on:
           - 'Asia/Tokyo'
           - 'Australia/Sydney'
           - ''
+        # Comment #1
+        #   When it is performed by workflow_dispatch, this default value will be referenced
+        #   instead of 'foo' in '${{ github.event.inputs.timezone || 'foo' }}'.
+        #   See also Comment #2.
         default: 'Asia/Tokyo'
   schedule:
     - cron: '40 1 * * *'
@@ -22,6 +26,9 @@ jobs:
     uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
     with:
       repo: noraworld/diary-templates
+      # Comment #2
+      #   The value after '||' is only referenced in cron.
+      #   See also Comment #1.
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
