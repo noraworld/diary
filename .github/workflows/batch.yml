@@ -19,7 +19,7 @@ on:
         #   See also Comment #2.
         default: 'Asia/Tokyo'
   schedule:
-    - cron: '40 1 * * *'
+    - cron: '30 23 * * *'
 
 jobs:
   templates-closer:
