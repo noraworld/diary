@@ -34,7 +34,7 @@ jobs:
   #     token: ${{ secrets.GH_TOKEN }}
 
   wait-for-templates-closed:
-    needs: templates-closer
+    # needs: templates-closer
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
