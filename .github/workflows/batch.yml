@@ -22,19 +22,19 @@ on:
     - cron: '30 23 * * *'
 
 jobs:
-  # templates-closer:
-  #   uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
-  #   with:
-  #     repo: noraworld/diary-templates
-  #     # Comment #2
-  #     #   The value after '||' is only referenced in cron.
-  #     #   See also Comment #1.
-  #     timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
-  #   secrets:
-  #     token: ${{ secrets.GH_TOKEN }}
+  templates-closer:
+    uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
+    with:
+      repo: noraworld/diary-templates
+      # Comment #2
+      #   The value after '||' is only referenced in cron.
+      #   See also Comment #1.
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
 
   wait-for-templates-closed:
-    # needs: templates-closer
+    needs: templates-closer
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -63,22 +63,22 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  # issue-changer:
-  #   needs: wait-for-templates-closed
-  #   uses: noraworld/diary/.github/workflows/issue-changer.yml@main
-  #   with:
-  #     main_repo: noraworld/diary
-  #     template_repo: noraworld/diary-templates
-  #     timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
-  #   secrets:
-  #     token: ${{ secrets.GH_TOKEN }}
+  issue-changer:
+    needs: wait-for-templates-closed
+    uses: noraworld/diary/.github/workflows/issue-changer.yml@main
+    with:
+      main_repo: noraworld/diary
+      template_repo: noraworld/diary-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
 
-  # templates-creator:
-  #   needs: issue-changer
-  #   uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
-  #   with:
-  #     main_repo: noraworld/diary
-  #     template_repo: noraworld/diary-templates
-  #     timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
-  #   secrets:
-  #     token: ${{ secrets.GH_TOKEN }}
+  templates-creator:
+    needs: issue-changer
+    uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
+    with:
+      main_repo: noraworld/diary
+      template_repo: noraworld/diary-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
