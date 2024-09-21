@@ -34,4 +34,4 @@ jobs:
               --body "$template"
         shell: sh
         env:
-          GH_TOKEN: ${{ secrets.token }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
