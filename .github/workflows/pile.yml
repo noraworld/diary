@@ -1,0 +1,37 @@
+name: Pile
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment a pile template
+        run: |
+          template=$(gh api "/repos/noraworld/diary-templates/contents/.github/ISSUE_TEMPLATE/pile.md" --jq .content |
+                       base64 --decode |
+                       awk '/^```/{f++; next} f==1' |
+                       while IFS= read -r line; do
+                         if [ "$line" = "<ここにやることを挿入>" ]; then
+                           gh issue list \
+                             --repo noraworld/to-do \
+                             --search "label:today,tomorrow" \
+                             --json title,url \
+                             --template '{{range.}}* [{{.title}}]({{.url}}){{"\r\n"}}{{end}}' |
+                             tac
+                         else
+                           echo "$line"
+                         fi
+                       done)
+
+            issue_number=$(gh issue list \
+                             --repo noraworld/diary-templates \
+                             --search "就寝前タスク整理" |
+                             awk '{ print $1 }')
+
+            gh issue comment "$issue_number" \
+              --repo noraworld/diary-templates \
+              --body "$template"
+        shell: sh
+        env:
+          GH_TOKEN: ${{ secrets.token }}
