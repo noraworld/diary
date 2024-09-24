@@ -84,6 +84,10 @@ jobs:
                   --body "$processed_body" \
                   --assignee "$assignee")
 
+          # "--search" option is a little bit weird.
+          #   The issue named "2024-09-22" is found even if the search word is "2024-09-23" or "2024-09-24".
+          #   Because of this, it works fine even if the title of the existing issue is not yesterday's one.
+          #   https://github.com/noraworld/daily-report-templates/blob/cfcaa0bc6c97eef59ed22afd6c5601e9be13855d/.github/workflows/batch.yml#L67-L75
           gh issue list                                  \
             --repo "$MAIN_REPO"                          \
             --search $(date '+%Y-%m-%d' --date '-1 day') |
