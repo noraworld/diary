@@ -30,6 +30,7 @@ jobs:
       #   The value after '||' is only referenced in cron.
       #   See also Comment #1.
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+      skip_date_check: false
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
