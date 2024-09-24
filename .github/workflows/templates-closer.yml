@@ -9,7 +9,7 @@ on:
       timezone:
         required: true
         type: string
-      skip_date_check:
+      date_check:
         required: true
         type: string
     secrets:
@@ -36,7 +36,7 @@ jobs:
                                           --jq .[].title |
                                           grep -c "$(date '+%Y-%m-%d' --date '-1 day')" || true)
 
-          if [ "$skip_date_check" != true ] && [ "$issue_templates_count" != "$issue_templates_matched_count" ]; then
+          if [ "$DATE_CHECK" = "true" ] && [ "$issue_templates_count" != "$issue_templates_matched_count" ]; then
             echo   "DEBUG: the number of diary templates:         $issue_templates_count" >&2
             echo   "DEBUG: the number of matched diary templates: $issue_templates_matched_count" >&2
             printf "DEBUG: the current time in %-18s %s\n" "$TZ:" "$(date)" >&2
@@ -54,3 +54,4 @@ jobs:
           GH_TOKEN: ${{ secrets.token }}
           REPO: ${{ inputs.repo }}
           TZ: ${{ inputs.timezone }}
+          DATE_CHECK: ${{ inputs.date_check }}
