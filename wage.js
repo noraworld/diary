@@ -11,7 +11,7 @@ const repository = process.env.REPO
 const [ owner, repo ] = repository.split('/')
 
 const man = 10000
-const totalPrefectures = 2
+const totalPrefectures = 47
 const averageWorkingHours = 8
 const averageWorkingDays = 20
 const totalMonths = 12
