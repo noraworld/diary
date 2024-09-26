@@ -1,0 +1,34 @@
+name: Wage
+
+on:
+  workflow_dispatch:
+    inputs:
+      my_annual:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install packages
+        run: npm install
+
+      - name: Insert wages
+        run: node $GITHUB_ACTION_PATH/wage.js
+        shell: sh
+        env:
+          GITHUB_ACTION_PATH: ${{ github.action_path }}
+          GITHUB_TOKEN:       ${{ secrets.GH_TOKEN }}
+          RESAS_API_KEY:      ${{ secrets.RESAS_API_KEY }}
+          MY_ANNUAL:          ${{ github.event.inputs.my_annual }}
+          REPO:               'noraworld/daily-report-templates'
+          SEARCH_QUERY:       '心構え'
