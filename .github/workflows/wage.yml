@@ -5,7 +5,16 @@ on:
     inputs:
       my_annual:
         required: true
+        description: 'My annual salary'
         type: string
+  workflow_call:
+    inputs:
+      my_annual:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
 
 jobs:
   build:
@@ -26,9 +35,8 @@ jobs:
         run: node wage.js
         shell: sh
         env:
-          GITHUB_ACTION_PATH: ${{ github.action_path }}
-          GITHUB_TOKEN:       ${{ secrets.GH_TOKEN }}
-          RESAS_API_KEY:      ${{ secrets.RESAS_API_KEY }}
-          MY_ANNUAL:          ${{ github.event.inputs.my_annual }}
+          GITHUB_TOKEN:       ${{ secrets.token || secrets.GH_TOKEN }}
+          RESAS_API_KEY:      ${{ secrets.token || secrets.RESAS_API_KEY }}
+          MY_ANNUAL:          ${{ inputs.my_annual || github.event.inputs.my_annual }}
           REPO:               'noraworld/daily-report-templates'
           SEARCH_QUERY:       '心構え'
