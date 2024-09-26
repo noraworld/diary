@@ -13,7 +13,7 @@ on:
         required: true
         type: string
     secrets:
-      github_token:
+      gh_token:
         required: true
       resas_api_key:
         required: true
@@ -37,7 +37,7 @@ jobs:
         run: node wage.js
         shell: sh
         env:
-          GITHUB_TOKEN:  ${{ secrets.github_token || secrets.GH_TOKEN }}
+          GITHUB_TOKEN:  ${{ secrets.gh_token || secrets.GH_TOKEN }}
           RESAS_API_KEY: ${{ secrets.resas_api_key || secrets.RESAS_API_KEY }}
           MY_ANNUAL:     ${{ inputs.my_annual || github.event.inputs.my_annual }}
           REPO:          'noraworld/daily-report-templates'
