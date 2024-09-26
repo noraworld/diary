@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Insert wages
-        run: node $GITHUB_ACTION_PATH/wage.js
+        run: node wage.js
         shell: sh
         env:
           GITHUB_ACTION_PATH: ${{ github.action_path }}
