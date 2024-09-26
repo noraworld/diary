@@ -7,6 +7,7 @@ on:
         required: true
         description: 'My annual salary'
         type: string
+        default: '768'
   workflow_call:
     inputs:
       my_annual:
