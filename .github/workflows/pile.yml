@@ -26,7 +26,7 @@ jobs:
 
             issue_number=$(gh issue list \
                              --repo noraworld/diary-templates \
-                             --search "就寝前タスク整理" |
+                             --search "pile 就寝前タスク整理" |
                              awk '{ print $1 }')
 
             gh issue comment "$issue_number" \
