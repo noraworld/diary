@@ -75,6 +75,7 @@ exclude:
   - _daily_report/.git-fetch-last-update
   - _daily_report/.git/
   - TEMPLATES.md
+  - templates/
 
 # for local network
 collections:
