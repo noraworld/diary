@@ -1,0 +1,10 @@
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+bin
+
+# for local network
+_private/
+_daily_report/
