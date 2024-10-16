@@ -49,7 +49,7 @@ jobs:
           body=$(echo "$ISSUE_TEMPLATE" | sed -e '/^---$/,/^---$/d')
           processed_body="$body"
 
-          if [ "$MAIN_REPO" = "noraworld/diary" ]; then
+          if [ "$MAIN_REPO" = "noraworld/reserved-diary" ]; then
             TO_DO=$(gh issue list                                                                         \
                     --repo noraworld/to-do                                                                \
                     --search "label:today,tomorrow"                                                       \
