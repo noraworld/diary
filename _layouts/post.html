@@ -24,14 +24,14 @@ layout: default
 <ul class="pagination blog-pager" style="margin-top: 10px;">
   {% if page.previous.url %}
   <li class="page-item previous">
-    <a class="page-link" href="{{ page.previous.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title | strip_html | xml_escape}}">&larr; Previous Post</a>
+    <a class="page-link" href="{{ page.previous.url | prepend: site.baseurl }}" data-toggle="tooltip" data-placement="top" title="{{page.previous.title | strip_html | xml_escape}}">&larr; Previous Post</a>
   </li>
   {% endif %}
   {% if page.next.url %}
   <li class="page-item next">
-    <a class="page-link" href="{{ page.next.url | relative_url }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title | strip_html | xml_escape}}">Next Post &rarr;</a>
+    <a class="page-link" href="{{ page.next.url | prepend: site.baseurl }}" data-toggle="tooltip" data-placement="top" title="{{page.next.title | strip_html | xml_escape}}">Next Post &rarr;</a>
   </li>
   {% endif %}
 </ul>
 
-<script src="{{ "/assets/js/newtab.js" | relative_url }}"></script>
+<script src="{{ "/assets/js/newtab.js" | prepend: site.baseurl }}"></script>
