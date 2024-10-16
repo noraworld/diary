@@ -66,9 +66,9 @@ jobs:
 
   issue-changer:
     needs: wait-for-templates-closed
-    uses: noraworld/diary/.github/workflows/issue-changer.yml@main
+    uses: noraworld/reserved-diary/.github/workflows/issue-changer.yml@main
     with:
-      main_repo: noraworld/diary
+      main_repo: noraworld/reserved-diary
       template_repo: noraworld/diary-templates
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
@@ -78,7 +78,7 @@ jobs:
     needs: issue-changer
     uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
     with:
-      main_repo: noraworld/diary
+      main_repo: noraworld/reserved-diary
       template_repo: noraworld/diary-templates
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
