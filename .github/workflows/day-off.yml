@@ -2,7 +2,22 @@ name: Day Off
 
 on:
   workflow_dispatch:
+    inputs:
+      timezone:
+        required: true
+        description: 'Timezone'
+        type: choice
+        options:
+          - ''
+          - 'Etc/Universal'
+          - 'Asia/Tokyo'
+          - 'Australia/Sydney'
+        default: 'Asia/Tokyo'
   workflow_call:
+    inputs:
+      timezone:
+        required: true
+        type: string
 
 jobs:
   build:
@@ -26,3 +41,5 @@ jobs:
       - name: Check if today is a day off or a holiday
         run: pipenv run python day-off.py
         shell: sh
+        env:
+          TZ: ${{ inputs.timezone || github.event.inputs.timezone }}
