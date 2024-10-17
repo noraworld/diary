@@ -43,6 +43,5 @@ if __name__ == '__main__':
             if datetime.date.today() == Util.full_date(day_off):
                 raise DayOffError
 
-    # if jpholiday.is_holiday(datetime.date.today()) is True:
-    if jpholiday.is_holiday(datetime.date(2024, 10, 14)) is True:
+    if jpholiday.is_holiday(datetime.date.today()) is True:
         raise HolidayError
