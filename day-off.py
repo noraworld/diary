@@ -45,3 +45,6 @@ if __name__ == '__main__':
 
     if jpholiday.is_holiday(datetime.date.today()) is True:
         raise HolidayError
+
+    print(datetime.datetime.now())
+    raise
