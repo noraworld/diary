@@ -84,7 +84,7 @@ jobs:
                   --body "$processed_body" \
                   --assignee "$assignee")
 
-          if [ "$(gh issue list --repo "$MAIN_REPO" | wc -l)" -gt 2 ]; then
+          if [ "$(gh issue list --repo "$MAIN_REPO" | wc -l)" -ne 2 ]; then
             echo "There are more than 2 issues, which means something is wrong." >&2
             exit 1
           fi
