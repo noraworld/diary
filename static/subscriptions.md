@@ -4,66 +4,66 @@ title: サブスクリスト
 permalink: /subscriptions
 ---
 
-# Subscriptions
-You don't have to record the subscription here that you join and disable soon.
+# サブスクリスト
+登録してすぐに解除する一時的なサブスクに関してはここでは記録しない。
 
-## Infrastructure
+## インフラ
 
-| Subscription Service | Auto-renewal | Cost                                                                                    | Data?[^1] | Need? | Expiration            | Period   |
-| -------------------- | :----------: | --------------------------------------------------------------------------------------: | :-------: | :----:| --------------------- | -------- |
-| noraworld.com        | YES          | [30.16 USD](https://dcc.godaddy.com/control/noraworld.com/settings)                     | NO        | YES   | Until no longer used  | Annually |
-| Google Workspace     | YES          | [1,795 JPY](https://www.g-workspace.jp/price/)                                          | YES       | YES   | Never                 | Monthly  |
-| iCloud               | YES          | [130 JPY](https://support.apple.com/ja-jp/HT201238)                                     | YES       | YES   | Never                 | Monthly  |
-| 1Password            | YES          | [35.88 USD](https://1password.com/sign-up/)                                             | YES       | YES   | Never                 | Annually |
-| Amazon Web Services  | YES          | [Fluctuation](https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/) | YES       | NO    | After backing up data | Monthly  |
+| サービス名 | 自動更新 | 料金 | データの保持 [^data] | 必要か | 有効期限 | 支払い周期 |
+| --- | :---: | --- | :---: | :---:| --- | --- |
+| noraworld.com | YES | [30.16 ドル](https://dcc.godaddy.com/control/noraworld.com/settings) | NO | YES | 使わなくなるまで | 年額 |
+| Google Workspace | YES | [1,795 円](https://www.g-workspace.jp/price/) | YES | YES | なし | 月額 |
+| iCloud | YES | [130 円](https://support.apple.com/ja-jp/HT201238) | YES | YES | なし | 月額 |
+| 1Password | YES | [35.88 ドル](https://1password.com/sign-up/) | YES | YES | なし | 年額 |
+| Amazon Web Services | YES | [変動](https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/) | YES | NO | バックアップが完了するまで | 月額 |
 
-## Utility
+## ユーティリティ
 
-| Subscription Service | Auto-renewal | Cost                                                                                                                                                                                                                                                                                          | Data?[^1] | Need? | Expiration           | Period   |
-| -------------------- | :----------: | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------: | :----:| -------------------- | -------- |
-| Money Forward        | YES          | [5,300 JPY](https://support.me.moneyforward.com/hc/ja/articles/4409828451993-%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E6%96%99%E9%87%91%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84) | NO        | YES   | Until no longer used | Annually |
+| サービス名 | 自動更新 | 料金 | データの保持 [^data] | 必要か | 有効期限 | 支払い周期   |
+| --- | :---: | --- | :---: | :---:| --- | --- |
+| Money Forward | YES | [5,300 円](https://support.me.moneyforward.com/hc/ja/articles/4409828451993-%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E6%96%99%E9%87%91%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84) | NO | YES | 使わなくなるまで | 年額 |
 
-## Entertainment
+## エンターテインメント
 
-| Subscription Service   | Auto-renewal | Cost                                                                                     | Data?[^1] | Need? | Expiration           | Period   |
-| ---------------------- | :----------: | ---------------------------------------------------------------------------------------: | :-------: | :----:| -------------------- | -------- |
-| Nintendo Switch Online | NO           | [2,400 JPY](https://www.nintendo.co.jp/hardware/switch/onlineservice/pricing/index.html) | YES[^2]   | NO    | 2024/12/28           | Annually |
-| YouTube Premium        | NO           | 1,280 JPY                                                                                | NO        | NO    | Until no longer used | Monthly  |
+| サービス名 | 自動更新 | 料金 | データの保持 [^data] | 必要か | 有効期限 | 支払い周期 |
+| --- | :---: | --- | :---: | :---:| --- | --- |
+| Nintendo Switch Online | NO | [2,400 円](https://www.nintendo.co.jp/hardware/switch/onlineservice/pricing/index.html) | YES[^do_not_care] | NO | 2024/12/28 | 年額 |
+| YouTube Premium | NO | 1,280 円 | NO | NO | 使わなくなるまで | 月額 |
 
 
-## Learning
+## 学習サービス
 
-| Subscription Service | Auto-renewal | Cost                                                                | Data?[^1] | Need?     | Expiration           | Period        |
-| -------------------- | :----------: | ------------------------------------------------------------------: | :-------: | :--------:| -------------------- | ------------- |
-| NordVPN              | NO           | TBA                                                                 | NO        | TEMPORARY | 2025/06/07           | Every 2 years |
+| サービス名 | 自動更新 | 料金 | データの保持 [^data] | 必要か | 有効期限 | 支払い周期 |
+| --- | :---: | --- | :---: | :---:| --- | --- |
+| NordVPN | NO | TBA | NO | 一時的 | 2025/06/07 | 隔年 |
 
-## Definitely Needed
+## 必須
 
-* Rent
-* Utility Costs (Electricity, Gas, Water, etc.)
-* Communication Expenses (Internet Charges, Mobile Phone Charges)
-* Taxes
+* 家賃
+* 光熱費 (電気、ガス、水道など)
+* 通信費 (インターネット料金、携帯料金)
+* 税金
 
-## Ended
+## 契約終了
 <details>
 
-| Subscription Service | Auto-renewal | Cost                                                                | Data?[^1] | Need? | Expiration | Period   |
+| サービス名 | 自動更新 | 料金 | データの保持 [^data] | 必要か | 有効期限 | 支払い周期 |
 | -------------------- | :----------: | ------------------------------------------------------------------: | :-------: | :---: | ---------- | -------- |
-| Zenhub               | NO           | [12.50 USD](https://www.zenhub.com/pricing)                         | PARTLY    | NO    | 2024/04/07 | Monthly  |
-| Amazon Prime         | NO           | [600 JPY](https://www.amazon.co.jp/gp/primecentral)                 | NO        | NO    | 2024/03/31 | Monthly  |
-| Kindle Unlimited     | NO           | [980 JPY](https://www.amazon.co.jp/yourmembershipsandsubscriptions) | NO        | NO    | 2024/04/25 | Monthly  |
-| Netflix              | NO           | [790 JPY](https://help.netflix.com/en/node/24926)                   | NO        | NO    | 2023/09/28 | Monthly  |
-| d Anime Store        | NO           | 550 JPY                                                             | NO        | NO    | 2023/07/29 | Monthly  |
-| Language Reactor     | NO           | 853 JPY                                                             | NO        | NO    | 2023/07/11 | Monthly  |
-| PolyGit              | NO           | 1,300 JPY                                                           | NO        | NO    | 2023/06/13 | Annually |
-| HiNative             | NO           | 1,200 JPY                                                           | NO        | NO    | 2022/09/03 | Monthly  |
-| NordVPN              | NO           | 1,510 JPY                                                           | NO        | NO    | 2022/08/27 | Monthly  |
-| YouTube Premium      | NO           | 1,180 JPY                                                           | NO        | NO    | 2022/08/09 | Monthly  |
-| D Labo               | NO           | 1,320 JPY                                                           | NO        | NO    | 2022/08/01 | Monthly  |
-| ELSA Speak           | NO           | 3,600 JPY                                                           | NO        | NO    | 2022/06/18 | Annually |
-| PlayStation Plus     | NO           | 5,143 JPY                                                           | YES[^2]   | NO    | 2022/03/27 | Annually |
+| Zenhub | NO | [12.50 ドル](https://www.zenhub.com/pricing) | 部分的 | NO | 2024/04/07 | 月額 |
+| Amazon Prime | NO | [600 円](https://www.amazon.co.jp/gp/primecentral) | NO | NO | 2024/03/31 | 月額 |
+| Kindle Unlimited | NO | [980 円](https://www.amazon.co.jp/yourmembershipsandsubscriptions) | NO | NO | 2024/04/25 | 月額 |
+| Netflix | NO | [790 円](https://help.netflix.com/en/node/24926) | NO | NO | 2023/09/28 | 月額 |
+| d アニメストア | NO | 550 円 | NO | NO | 2023/07/29 | 月額 |
+| Language Reactor | NO | 853 円 | NO | NO | 2023/07/11 | 月額 |
+| PolyGit | NO | 1,300 円 | NO | NO | 2023/06/13 | 年額 |
+| HiNative | NO | 1,200 円 | NO | NO | 2022/09/03 | 月額 |
+| NordVPN | NO | 1,510 円 | NO | NO | 2022/08/27 | 月額 |
+| YouTube Premium | NO | 1,180 円 | NO | NO | 2022/08/09 | 月額 |
+| D ラボ | NO | 1,320 円 | NO | NO | 2022/08/01 | 月額 |
+| ELSA Speak | NO | 3,600 円 | NO | NO | 2022/06/18 | 年額 |
+| PlayStation Plus | NO | 5,143 円 | YES[^do_not_care] | NO | 2022/03/27 | 年額 |
 </details>
 
-[^1]: Whether there are data under control of those subscriptions. This does not mean whether my accounts itself have my data. It means whether cancelling those subscriptions can cause loss of control of data.
+[^data]: そのサブスクでデータが管理されているかどうか。アカウント自体にデータが格納されているかどうかではない。サブスクをキャンセルしたときにデータを失う可能性があるかどうか。
 
-[^2]: Yes, but there is no problem with the data losing because the gameplay recordings are being stored on YouTube.
+[^do_not_care]: サブスクを解除すると失われるデータが存在するが YouTube に動画が保存されているのでデータの消失について気にする必要はない。
