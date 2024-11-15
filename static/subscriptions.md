@@ -1,3 +1,9 @@
+---
+layout: page
+title: サブスクリスト
+permalink: /subscriptions
+---
+
 # Subscriptions
 You don't have to record the subscription here that you join and disable soon.
 
