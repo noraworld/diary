@@ -7,35 +7,44 @@ permalink: /subscriptions
 # サブスクリスト
 登録してすぐに解除する一時的なサブスクに関してはここでは記録しない。
 
+
+
 ## インフラ
 
-| サービス名 | 自動更新 | 料金 | データの保持 [^data] | 必要か | 有効期限 | 支払い周期 |
-| --- | :---: | --- | :---: | :---:| --- | --- |
+| サービス名 | 自動更新 | 料金 | データの保持[^data] | 必要か | 有効期限 | 支払い周期 |
+| --- | :---: | --- | :---: | :---: | --- | --- |
 | noraworld.com | YES | [30.16 ドル](https://dcc.godaddy.com/control/noraworld.com/settings) | NO | YES | 使わなくなるまで | 年額 |
 | Google Workspace | YES | [1,795 円](https://www.g-workspace.jp/price/) | YES | YES | なし | 月額 |
 | iCloud | YES | [130 円](https://support.apple.com/ja-jp/HT201238) | YES | YES | なし | 月額 |
 | 1Password | YES | [35.88 ドル](https://1password.com/sign-up/) | YES | YES | なし | 年額 |
 | Amazon Web Services | YES | [変動](https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/) | YES | NO | バックアップが完了するまで | 月額 |
 
+
+
 ## ユーティリティ
 
-| サービス名 | 自動更新 | 料金 | データの保持 [^data] | 必要か | 有効期限 | 支払い周期   |
-| --- | :---: | --- | :---: | :---:| --- | --- |
+| サービス名 | 自動更新 | 料金 | データの保持[^data] | 必要か | 有効期限 | 支払い周期 |
+| --- | :---: | --- | :---: | :---: | --- | --- |
 | Money Forward | YES | [5,300 円](https://support.me.moneyforward.com/hc/ja/articles/4409828451993-%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E6%96%99%E9%87%91%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84) | NO | YES | 使わなくなるまで | 年額 |
+
+
 
 ## エンターテインメント
 
-| サービス名 | 自動更新 | 料金 | データの保持 [^data] | 必要か | 有効期限 | 支払い周期 |
-| --- | :---: | --- | :---: | :---:| --- | --- |
+| サービス名 | 自動更新 | 料金 | データの保持[^data] | 必要か | 有効期限 | 支払い周期 |
+| --- | :---: | --- | :---: | :---: | --- | --- |
 | Nintendo Switch Online | NO | [2,400 円](https://www.nintendo.co.jp/hardware/switch/onlineservice/pricing/index.html) | YES[^do_not_care] | NO | 2024/12/28 | 年額 |
 | YouTube Premium | NO | 1,280 円 | NO | NO | 使わなくなるまで | 月額 |
 
 
+
 ## 学習サービス
 
-| サービス名 | 自動更新 | 料金 | データの保持 [^data] | 必要か | 有効期限 | 支払い周期 |
-| --- | :---: | --- | :---: | :---:| --- | --- |
+| サービス名 | 自動更新 | 料金 | データの保持[^data] | 必要か | 有効期限 | 支払い周期 |
+| --- | :---: | --- | :---: | :---: | --- | --- |
 | NordVPN | NO | TBA | NO | 一時的 | 2025/06/07 | 隔年 |
+
+
 
 ## 必須
 
@@ -44,11 +53,13 @@ permalink: /subscriptions
 * 通信費 (インターネット料金、携帯料金)
 * 税金
 
+
+
 ## 契約終了
 <details>
 
-| サービス名 | 自動更新 | 料金 | データの保持 [^data] | 必要か | 有効期限 | 支払い周期 |
-| -------------------- | :----------: | ------------------------------------------------------------------: | :-------: | :---: | ---------- | -------- |
+| サービス名 | 自動更新 | 料金 | データの保持[^data] | 必要か | 有効期限 | 支払い周期 |
+| --- | :---: | --- | :---: | :---: | --- | --- |
 | Zenhub | NO | [12.50 ドル](https://www.zenhub.com/pricing) | 部分的 | NO | 2024/04/07 | 月額 |
 | Amazon Prime | NO | [600 円](https://www.amazon.co.jp/gp/primecentral) | NO | NO | 2024/03/31 | 月額 |
 | Kindle Unlimited | NO | [980 円](https://www.amazon.co.jp/yourmembershipsandsubscriptions) | NO | NO | 2024/04/25 | 月額 |
@@ -63,6 +74,8 @@ permalink: /subscriptions
 | ELSA Speak | NO | 3,600 円 | NO | NO | 2022/06/18 | 年額 |
 | PlayStation Plus | NO | 5,143 円 | YES[^do_not_care] | NO | 2022/03/27 | 年額 |
 </details>
+
+
 
 [^data]: そのサブスクでデータが管理されているかどうか。アカウント自体にデータが格納されているかどうかではない。サブスクをキャンセルしたときにデータを失う可能性があるかどうか。
 
