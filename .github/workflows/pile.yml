@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Comment a pile template
         run: |
-          template=$(gh api "/repos/noraworld/diary-templates/contents/.github/ISSUE_TEMPLATE/pile.md" --jq .content |
+          template=$(gh api "/repos/noraworld/diary-templates/contents/.github/ISSUE_TEMPLATE/13--pile.md" --jq .content |
                        base64 --decode |
                        awk '/^```/{f++; next} f==1' |
                        while IFS= read -r line; do
