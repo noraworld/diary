@@ -64,6 +64,10 @@ jobs:
             # https://chat.openai.com/share/0bb3dd50-70bb-4c09-8396-1f53824c3962
             escaped_url=$(echo "$url" | sed 's/[\^\$\.\/]/\\&/g')
             diary_issue_body=$(echo "$diary_issue_body" | sed -E "s/$display_name/\[$display_name\]\($escaped_url\)/g")
+
+            # https://github.com/noraworld/diary-templates/actions/runs/12000592518/job/33477428100
+            # https://syossan.hateblo.jp/entry/2022/12/24/124141
+            sleep 2
           done
 
           gh issue edit --repo "$MAIN_REPO" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
