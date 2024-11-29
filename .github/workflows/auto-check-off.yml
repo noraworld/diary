@@ -41,6 +41,9 @@ jobs:
     needs: check
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - name: Add the label
         run: |
           gh issue edit ${{ github.event.issue.number }} --add-label 'achieved'
