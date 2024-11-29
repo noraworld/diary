@@ -1,0 +1,49 @@
+name: Auto Check-off
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  check:
+    # https://stackoverflow.com/questions/59588605/how-to-check-for-a-label-in-a-github-action-condition#answer-59588725
+    # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions-in-workflows-and-actions#example-using-an-object-filter
+    if: github.event.issue.state == 'open' && contains(github.event.issue.labels.*.name, 'achieved')
+    runs-on: ubuntu-latest
+    steps:
+      # "2024-03-05_sleep_睡眠記録" => "睡眠記録"
+      - name: Get a title
+        run: echo "TITLE=$(cut -d '_' -f3 <<< "${{ github.event.issue.title }}")" >> $GITHUB_ENV
+
+      - name: Check if off
+        run: |
+          NUMBER=$(
+            gh issue list                       \
+              --repo "noraworld/reserved-diary" \
+              --limit 1                         |
+              awk '{ print $1 }'
+          )
+          BODY=$(
+            gh issue view                       \
+              --repo "noraworld/reserved-diary" \
+              --json body                       \
+              --jq .body                        \
+              "$NUMBER"                         |
+              sed -E "s/^\* \[ \] \[$TITLE/\* \[x\] \[$TITLE/g"
+          )
+
+          gh issue edit --repo "noraworld/reserved-diary" --body "$BODY" "$NUMBER"
+        shell: sh
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  label:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add the label
+        run: |
+          gh issue edit ${{ github.event.issue.number }} --add-label 'achieved'
+        shell: sh
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
