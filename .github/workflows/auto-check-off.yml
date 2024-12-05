@@ -1,8 +1,14 @@
 name: Auto Check-off
 
 on:
-  issue_comment:
-    types: [created]
+  workflow_call:
+    inputs:
+      main_repo:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
 
 jobs:
   check:
@@ -22,24 +28,25 @@ jobs:
       - name: Check if off
         run: |
           NUMBER=$(
-            gh issue list                       \
-              --repo "noraworld/reserved-diary" \
-              --limit 1                         |
+            gh issue list         \
+              --repo "$MAIN_REPO" \
+              --limit 1           |
               awk '{ print $1 }'
           )
           BODY=$(
-            gh issue view                       \
-              --repo "noraworld/reserved-diary" \
-              --json body                       \
-              --jq .body                        \
-              "$NUMBER"                         |
+            gh issue view         \
+              --repo "$MAIN_REPO" \
+              --json body         \
+              --jq .body          \
+              "$NUMBER"           |
               sed -E "s/^\* \[ \] \[$TITLE/\* \[x\] \[$TITLE/g"
           )
 
-          gh issue edit --repo "noraworld/reserved-diary" --body "$BODY" "$NUMBER"
+          gh issue edit --repo "$MAIN_REPO" --body "$BODY" "$NUMBER"
         shell: sh
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          MAIN_REPO: ${{ inputs.main_repo }}
+          GH_TOKEN: ${{ secrets.token }}
 
   label:
     needs: check
@@ -53,4 +60,4 @@ jobs:
           gh issue edit ${{ github.event.issue.number }} --add-label 'achieved'
         shell: sh
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.token }}
