@@ -8,7 +8,11 @@ jobs:
   check:
     # https://stackoverflow.com/questions/59588605/how-to-check-for-a-label-in-a-github-action-condition#answer-59588725
     # https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/evaluate-expressions-in-workflows-and-actions#example-using-an-object-filter
-    if: github.event.issue.state == 'open' && !contains(github.event.issue.labels.*.name, 'achieved')
+    if: >
+      github.event.issue.state == 'open'                       &&
+      !contains(github.event.issue.labels.*.name, 'abandoned') &&
+      !contains(github.event.issue.labels.*.name, 'achieved')  &&
+      !contains(github.event.issue.labels.*.name, 'done')
     runs-on: ubuntu-latest
     steps:
       # "2024-03-05_sleep_睡眠記録" => "睡眠記録"
