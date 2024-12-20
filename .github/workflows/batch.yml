@@ -22,127 +22,127 @@ on:
     - cron: '30 23 * * *'
 
 jobs:
-  # templates-closer:
-  #   uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
-  #   with:
-  #     repo: noraworld/diary-templates
-  #     # Comment #2
-  #     #   The value after '||' is only referenced in cron.
-  #     #   See also Comment #1.
-  #     timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
-  #     date_check: true
-  #   secrets:
-  #     token: ${{ secrets.GH_TOKEN }}
+  templates-closer:
+    uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
+    with:
+      repo: noraworld/diary-templates
+      # Comment #2
+      #   The value after '||' is only referenced in cron.
+      #   See also Comment #1.
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+      date_check: true
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
 
-  # wait-for-templates-closed:
-  #   needs: templates-closer
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Check out repository
-  #       uses: actions/checkout@v2
+  wait-for-templates-closed:
+    needs: templates-closer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
 
-  #     - name: Check if all of the diary templates have successfully been closed
-  #       run: |
-  #         trial=0
+      - name: Check if all of the diary templates have successfully been closed
+        run: |
+          trial=0
 
-  #         # Wait for all of the diary templates to be closed.
-  #         while [ "$(gh issue list --repo "noraworld/diary-templates" | wc -l)" -ne 0 ]; do
-  #           # The shorter the sleep interval is, the more frequently the error below may occur.
-  #           #   GraphQL: was submitted too quickly (createIssue)
-  #           sleep 15
+          # Wait for all of the diary templates to be closed.
+          while [ "$(gh issue list --repo "noraworld/diary-templates" | wc -l)" -ne 0 ]; do
+            # The shorter the sleep interval is, the more frequently the error below may occur.
+            #   GraphQL: was submitted too quickly (createIssue)
+            sleep 15
 
-  #           trial=$(($trial + 1))
-  #           if [ "$trial" -gt 5 ]; then
-  #             echo "Timeout period exceeded." >&2
-  #             exit 1
-  #           fi
-  #         done
+            trial=$(($trial + 1))
+            if [ "$trial" -gt 5 ]; then
+              echo "Timeout period exceeded." >&2
+              exit 1
+            fi
+          done
 
-  #         # To avoid causing the error. Just in case.
-  #         sleep 30
-  #       shell: sh
-  #       env:
-  #         GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          # To avoid causing the error. Just in case.
+          sleep 30
+        shell: sh
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  # issue-changer:
-  #   needs: wait-for-templates-closed
-  #   uses: noraworld/reserved-diary/.github/workflows/issue-changer.yml@main
-  #   with:
-  #     main_repo: noraworld/reserved-diary
-  #     template_repo: noraworld/diary-templates
-  #     timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
-  #   secrets:
-  #     token: ${{ secrets.GH_TOKEN }}
+  issue-changer:
+    needs: wait-for-templates-closed
+    uses: noraworld/reserved-diary/.github/workflows/issue-changer.yml@main
+    with:
+      main_repo: noraworld/reserved-diary
+      template_repo: noraworld/diary-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
 
-  # templates-creator:
-  #   needs: issue-changer
-  #   uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
-  #   with:
-  #     main_repo: noraworld/reserved-diary
-  #     template_repo: noraworld/diary-templates
-  #     timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
-  #   secrets:
-  #     token: ${{ secrets.GH_TOKEN }}
+  templates-creator:
+    needs: issue-changer
+    uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
+    with:
+      main_repo: noraworld/reserved-diary
+      template_repo: noraworld/diary-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
 
-  # private-templates-closer:
-  #   needs: templates-creator
-  #   uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
-  #   with:
-  #     repo: noraworld/private-diary-templates
-  #     # Comment #2
-  #     #   The value after '||' is only referenced in cron.
-  #     #   See also Comment #1.
-  #     timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
-  #     date_check: true
-  #   secrets:
-  #     token: ${{ secrets.GH_TOKEN }}
+  private-templates-closer:
+    needs: templates-creator
+    uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
+    with:
+      repo: noraworld/private-diary-templates
+      # Comment #2
+      #   The value after '||' is only referenced in cron.
+      #   See also Comment #1.
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+      date_check: true
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
 
-  # private-wait-for-templates-closed:
-  #   needs: private-templates-closer
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Check out repository
-  #       uses: actions/checkout@v2
+  private-wait-for-templates-closed:
+    needs: private-templates-closer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
 
-  #     - name: Check if all of the private diary templates have successfully been closed
-  #       run: |
-  #         trial=0
+      - name: Check if all of the private diary templates have successfully been closed
+        run: |
+          trial=0
 
-  #         # Wait for all of the private diary templates to be closed.
-  #         while [ "$(gh issue list --repo "noraworld/private-diary-templates" | wc -l)" -ne 0 ]; do
-  #           # The shorter the sleep interval is, the more frequently the error below may occur.
-  #           #   GraphQL: was submitted too quickly (createIssue)
-  #           sleep 15
+          # Wait for all of the private diary templates to be closed.
+          while [ "$(gh issue list --repo "noraworld/private-diary-templates" | wc -l)" -ne 0 ]; do
+            # The shorter the sleep interval is, the more frequently the error below may occur.
+            #   GraphQL: was submitted too quickly (createIssue)
+            sleep 15
 
-  #           trial=$(($trial + 1))
-  #           if [ "$trial" -gt 5 ]; then
-  #             echo "Timeout period exceeded." >&2
-  #             exit 1
-  #           fi
-  #         done
+            trial=$(($trial + 1))
+            if [ "$trial" -gt 5 ]; then
+              echo "Timeout period exceeded." >&2
+              exit 1
+            fi
+          done
 
-  #         # To avoid causing the error. Just in case.
-  #         sleep 30
-  #       shell: sh
-  #       env:
-  #         GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          # To avoid causing the error. Just in case.
+          sleep 30
+        shell: sh
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  # private-issue-changer:
-  #   needs: private-wait-for-templates-closed
-  #   uses: noraworld/reserved-diary/.github/workflows/issue-changer.yml@main
-  #   with:
-  #     main_repo: noraworld/private-diary
-  #     template_repo: noraworld/private-diary-templates
-  #     timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
-  #   secrets:
-  #     token: ${{ secrets.GH_TOKEN }}
+  private-issue-changer:
+    needs: private-wait-for-templates-closed
+    uses: noraworld/reserved-diary/.github/workflows/issue-changer.yml@main
+    with:
+      main_repo: noraworld/private-diary
+      template_repo: noraworld/private-diary-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
 
-  # private-templates-creator:
-    # needs: private-issue-changer
-    # uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
-    # with:
-    #   main_repo: noraworld/private-diary
-    #   template_repo: noraworld/private-diary-templates
-    #   timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
-    # secrets:
-    #   token: ${{ secrets.GH_TOKEN }}
+  private-templates-creator:
+    needs: private-issue-changer
+    uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
+    with:
+      main_repo: noraworld/private-diary
+      template_repo: noraworld/private-diary-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
