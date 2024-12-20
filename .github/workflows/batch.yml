@@ -137,12 +137,12 @@ jobs:
   #   secrets:
   #     token: ${{ secrets.GH_TOKEN }}
 
-  private-templates-creator:
+  # private-templates-creator:
     # needs: private-issue-changer
-    uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
-    with:
-      main_repo: noraworld/private-diary
-      template_repo: noraworld/private-diary-templates
-      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
-    secrets:
-      token: ${{ secrets.GH_TOKEN }}
+    # uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
+    # with:
+    #   main_repo: noraworld/private-diary
+    #   template_repo: noraworld/private-diary-templates
+    #   timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    # secrets:
+    #   token: ${{ secrets.GH_TOKEN }}
