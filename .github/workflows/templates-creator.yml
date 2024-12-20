@@ -21,7 +21,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.template_repo }}
+          ref: main
+          token: ${{ secrets.token }}
+          path: tmp
 
       - name: Create issues from templates
         run: |
@@ -37,7 +42,7 @@ jobs:
             exit 1
           fi
 
-          for issue_template in .github/ISSUE_TEMPLATE/*; do
+          for issue_template in tmp/.github/ISSUE_TEMPLATE/*; do
             title=$(grep "title: " "$issue_template"                              |
                     sed -e 's/^title: //g'                                        |
                     sed -e "s/[\"\']//g"                                          |
