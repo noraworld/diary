@@ -89,9 +89,6 @@ jobs:
     uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
     with:
       repo: noraworld/private-diary-templates
-      # Comment #2
-      #   The value after '||' is only referenced in cron.
-      #   See also Comment #1.
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
       date_check: true
     secrets:
