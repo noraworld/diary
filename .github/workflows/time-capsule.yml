@@ -5,7 +5,6 @@ on:
     inputs:
       date:
         required: false
-        # description: 'Date (format: YYYY-MM-DD, default: today's date)'
         description: "Date (format: YYYY-MM-DD, default: today's date)"
         type: string
   # schedule:
