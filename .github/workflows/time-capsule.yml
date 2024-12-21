@@ -7,8 +7,8 @@ on:
         required: false
         description: "Date (format: YYYY-MM-DD, default: today's date)"
         type: string
-  # schedule:
-  #   - cron: '0 3 * * *'
+  schedule:
+    - cron: '0 3 * * *'
 
 jobs:
   migrate:
