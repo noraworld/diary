@@ -4,11 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       custom_date:
-        required: false
-        description: 'Date (format: YYYY-MM-DD, default: today's date)'
         type: string
-  # schedule:
-  #   - cron: '0 3 * * *'
+        description: 'Date (format: YYYY-MM-DD, default: today's date)'
+        required: false
 
 jobs:
   migrate:
