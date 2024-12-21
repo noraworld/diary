@@ -65,10 +65,15 @@ jobs:
       # Never execute "git add ." or "git add --all"!!!
       - name: Commit
         run: |
+          # https://qiita.com/thaim/items/3d1a4d09ec4a7d8844ce
+          git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
           git add _posts
           git commit -m "Add _posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md"
           git push -u origin main
           cd reserved-diary
+          git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
           git add _posts
           git commit -m "Delete _posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md"
           git push -u origin main
