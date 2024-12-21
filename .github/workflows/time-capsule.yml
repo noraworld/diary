@@ -1,0 +1,74 @@
+name: Time Capsule
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        required: false
+        description: 'Date (format: YYYY-MM-DD, default: today's date)'
+        type: string
+  # schedule:
+  #   - cron: '0 3 * * *'
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out noraworld/diary
+        uses: actions/checkout@v4
+
+      - name: Check out noraworld/reserved-diary
+        uses: actions/checkout@v4
+        with:
+          repository: noraworld/reserved-diary
+          ref: main
+          token: ${{ secrets.GH_TOKEN }}
+          path: reserved-diary
+
+      # FIXME: 1090 is a magic number
+      - name: Get date
+        run: |
+          if [ "$(echo "${{ github.event.inputs.date }}" |
+            grep -cE "^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")" -eq 1 ]
+          then
+            echo "DATE=${{ github.event.inputs.date }}" >> $GITHUB_ENV
+          else
+            echo "DATE=$(date -d "1090 days ago" +"%Y-%m-%d")" >> $GITHUB_ENV
+          fi
+
+      - name: Get year
+        run: echo "YEAR=$(cut -d '-' -f1 <<< $DATE)" >> $GITHUB_ENV
+
+      - name: Get month
+        run: echo "MONTH=$(cut -d '-' -f2 <<< $DATE)" >> $GITHUB_ENV
+
+      - name: Check file existence
+        run: |
+          if ! [ -e "reserved-diary/_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md" ]; then
+            echo "reserved-diary/_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md does not exist" >&2
+            exit 1
+          fi
+
+      - name: Check file duplication
+        run: |
+          if [ -e "_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md" ]; then
+            echo "_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md already exists" >&2
+            exit 1
+          fi
+
+      - name: Create directory
+        run: mkdir -p _posts/${{ env.YEAR }}/${{ env.MONTH }}
+
+      - name: Migrate file
+        run: mv -n reserved-diary/_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md _posts/${{ env.YEAR }}/${{ env.MONTH }}
+
+      # Never execute "git add ." or "git add --all"!!!
+      - name: Commit
+        run: |
+          git add _posts
+          git commit -m "Add _posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md"
+          git push -u origin main
+          cd reserved-diary
+          git add _posts
+          git commit -m "Delete _posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md"
+          git push -u origin main
