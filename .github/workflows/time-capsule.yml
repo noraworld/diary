@@ -3,7 +3,7 @@ name: Time Capsule
 on:
   workflow_dispatch:
     inputs:
-      date:
+      custom_date:
         required: false
         description: 'Date (format: YYYY-MM-DD, default: today's date)'
         type: string
@@ -28,10 +28,10 @@ jobs:
       # FIXME: 1090 is a magic number
       - name: Get date
         run: |
-          if [ "$(echo "${{ github.event.inputs.date }}" |
+          if [ "$(echo "${{ github.event.inputs.custom_date }}" |
             grep -cE "^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")" -eq 1 ]
           then
-            echo "DATE=${{ github.event.inputs.date }}" >> $GITHUB_ENV
+            echo "DATE=${{ github.event.inputs.custom_date }}" >> $GITHUB_ENV
           else
             echo "DATE=$(date -d "1090 days ago" +"%Y-%m-%d")" >> $GITHUB_ENV
           fi
