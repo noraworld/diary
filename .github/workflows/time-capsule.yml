@@ -5,7 +5,7 @@ on:
     inputs:
       custom_date:
         type: string
-        description: 'Date (format: YYYY-MM-DD, default: today's date)'
+        description: 'Date'
         required: false
 
 jobs:
