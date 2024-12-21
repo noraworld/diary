@@ -55,6 +55,7 @@ timezone: Asia/Tokyo
 # their entries' file path in the `include:` list.
 #
 exclude:
+  - .github/
   - .sass-cache/
   - .jekyll-cache/
   - gemfiles/
