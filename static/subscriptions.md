@@ -34,7 +34,7 @@ permalink: /subscriptions
 
 | サービス名 | 自動更新 | 料金 | データの保持[^data] | 要否 | 有効期限 | 支払周期 |
 | --- | :---: | ---: | :---: | :---: | --- | --- |
-| Nintendo Switch Online | NO | [¥2,400](https://www.nintendo.co.jp/hardware/switch/onlineservice/pricing/index.html) | YES[^do_not_care] | NO | 2024/12/28 | 年額 |
+| Nintendo Switch Online | YES | [¥2,400](https://www.nintendo.co.jp/hardware/switch/onlineservice/pricing/index.html) | YES[^do_not_care] | NO | 使わなくなるまで | 年額 |
 | YouTube Premium | NO | ¥1,280 | NO | NO | 使わなくなるまで | 月額 |
 
 
