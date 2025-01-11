@@ -38,11 +38,52 @@ jobs:
               --repo "$MAIN_REPO" \
               --json body         \
               --jq .body          \
-              "$NUMBER"           |
-              sed -E "s/^\* \[ \] \[$TITLE/\* \[x\] \[$TITLE/g"
+              "$NUMBER"
+          )
+          BODY_WITH_CHECKED_TASK=$(
+            echo "$BODY" |
+            sed -E "s/^\* \[ \] \[$TITLE/\* \[x\] \[$TITLE/g"
           )
 
-          gh issue edit --repo "$MAIN_REPO" --body "$BODY" "$NUMBER"
+          if [ "$BODY" != "$BODY_WITH_CHECKED_TASK" ]; then
+            gh issue edit --repo "$MAIN_REPO" --body "$BODY_WITH_CHECKED_TASK" "$NUMBER"
+          else
+            BODY_WITH_OPTIONAL_TASK=$(
+              echo "$BODY" |
+              awk '
+              /### ✨ 任意/ {
+                  print;
+                  process_next = 1;
+                  next;
+              }
+              process_next {
+                  if ($0 ~ /\* \[[x| ]\] \[(.*)\]\((.*)\)/) {
+                      print;
+                      insert = "* [ ] [" ENVIRON["TITLE"] "](${{ github.event.issue.html_url }})";
+
+                      while (getline > 0) {
+                          if ($0 ~ /\* \[[x| ]\] \[(.*)\]\((.*)\)/) {
+                              print;
+                          } else {
+                              print insert;
+                              print;
+                              break;
+                          }
+                      }
+                  } else if (/特になし/) {
+                      $0 = "* [ ] [" ENVIRON["TITLE"] "](${{ github.event.issue.html_url }})";
+                      print;
+                  } else {
+                      print;
+                  }
+                  process_next = 0;
+                  next;
+              }
+              { print }'
+            )
+
+            gh issue edit --repo "$MAIN_REPO" --body "$BODY_WITH_OPTIONAL_TASK" "$NUMBER"
+          fi
         shell: sh
         env:
           MAIN_REPO: ${{ inputs.main_repo }}
