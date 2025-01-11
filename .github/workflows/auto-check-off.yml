@@ -18,7 +18,8 @@ jobs:
       github.event.issue.state == 'open'                       &&
       !contains(github.event.issue.labels.*.name, 'abandoned') &&
       !contains(github.event.issue.labels.*.name, 'achieved')  &&
-      !contains(github.event.issue.labels.*.name, 'done')
+      !contains(github.event.issue.labels.*.name, 'done')      &&
+      !contains(github.event.issue.labels.*.name, 'yet')
     runs-on: ubuntu-latest
     steps:
       # "2024-03-05_sleep_睡眠記録" => "睡眠記録"
@@ -70,6 +71,19 @@ jobs:
       - name: Add the label
         run: |
           gh issue edit ${{ github.event.issue.number }} --add-label 'achieved'
+        shell: sh
+        env:
+          GH_TOKEN: ${{ secrets.token }}
+
+  yet:
+    if: >
+      github.event.issue.state == 'open' &&
+      contains(github.event.issue.labels.*.name, 'yet')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remove the label
+        run: |
+          gh issue edit ${{ github.event.issue.number }} --remove-label 'yet'
         shell: sh
         env:
           GH_TOKEN: ${{ secrets.token }}
