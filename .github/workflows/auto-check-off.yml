@@ -40,49 +40,20 @@ jobs:
               --jq .body          \
               "$NUMBER"
           )
-          BODY_WITH_CHECKED_TASK=$(
+          BODY_WITH_CHECKED_MANDATORY_TASK=$(
             echo "$BODY" |
             sed -E "s/^\* \[ \] \[$TITLE/\* \[x\] \[$TITLE/g"
           )
 
-          if [ "$BODY" != "$BODY_WITH_CHECKED_TASK" ]; then
-            gh issue edit --repo "$MAIN_REPO" --body "$BODY_WITH_CHECKED_TASK" "$NUMBER"
+          if [ "$BODY" != "$BODY_WITH_CHECKED_MANDATORY_TASK" ]; then
+            gh issue edit --repo "$MAIN_REPO" --body "$BODY_WITH_CHECKED_MANDATORY_TASK" "$NUMBER"
           else
-            BODY_WITH_OPTIONAL_TASK=$(
+            BODY_WITH_CHECKED_OPTIONAL_TASK=$(
               echo "$BODY" |
-              awk '
-              /### ✨ 任意/ {
-                  print;
-                  process_next = 1;
-                  next;
-              }
-              process_next {
-                  if ($0 ~ /\* \[[x| ]\] \[(.*)\]\((.*)\)/) {
-                      print;
-                      insert = "* [x] [" ENVIRON["TITLE"] "](${{ github.event.issue.html_url }})";
-
-                      while (getline > 0) {
-                          if ($0 ~ /\* \[[x| ]\] \[(.*)\]\((.*)\)/) {
-                              print;
-                          } else {
-                              print insert;
-                              print;
-                              break;
-                          }
-                      }
-                  } else if (/特になし/) {
-                      $0 = "* [x] [" ENVIRON["TITLE"] "](${{ github.event.issue.html_url }})";
-                      print;
-                  } else {
-                      print;
-                  }
-                  process_next = 0;
-                  next;
-              }
-              { print }'
+              sed -E "s/^\* \[$TITLE/\* \[x\] \[$TITLE/g"
             )
 
-            gh issue edit --repo "$MAIN_REPO" --body "$BODY_WITH_OPTIONAL_TASK" "$NUMBER"
+            gh issue edit --repo "$MAIN_REPO" --body "$BODY_WITH_CHECKED_OPTIONAL_TASK" "$NUMBER"
           fi
         shell: sh
         env:
