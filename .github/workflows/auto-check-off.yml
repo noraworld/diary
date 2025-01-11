@@ -59,7 +59,7 @@ jobs:
               process_next {
                   if ($0 ~ /\* \[[x| ]\] \[(.*)\]\((.*)\)/) {
                       print;
-                      insert = "* [ ] [" ENVIRON["TITLE"] "](${{ github.event.issue.html_url }})";
+                      insert = "* [x] [" ENVIRON["TITLE"] "](${{ github.event.issue.html_url }})";
 
                       while (getline > 0) {
                           if ($0 ~ /\* \[[x| ]\] \[(.*)\]\((.*)\)/) {
@@ -71,7 +71,7 @@ jobs:
                           }
                       }
                   } else if (/特になし/) {
-                      $0 = "* [ ] [" ENVIRON["TITLE"] "](${{ github.event.issue.html_url }})";
+                      $0 = "* [x] [" ENVIRON["TITLE"] "](${{ github.event.issue.html_url }})";
                       print;
                   } else {
                       print;
