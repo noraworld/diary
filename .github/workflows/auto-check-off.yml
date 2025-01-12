@@ -81,6 +81,9 @@ jobs:
       contains(github.event.issue.labels.*.name, 'yet')
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - name: Remove the label
         run: |
           gh issue edit ${{ github.event.issue.number }} --remove-label 'yet'
