@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Timeline
+title: タイムライン
 permalink: /timeline
 
 # MEMO:
