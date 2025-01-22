@@ -17,6 +17,16 @@ permalink: /timeline
 
 人生における年表のような記念日表のようなもの。
 
+<details>
+<summary>リンクについて</summary>
+
+| 分類 | 説明 |
+| :---: | --- |
+| Web | ウェブ版 ([Noraworld Diary](https://noraworld.github.io/diary/)) でアクセス可能なリンク |
+| Repo | リポジトリ版 ([noraworld/diary](https://github.com/noraworld/diary)) でアクセス可能なリンク |
+| Reserved | まだ公開されていない日記のリンク (筆者専用) |
+</details>
+
 | Date | Web | Repo | Reserved | Event |
 | :---: | :---: | :---: | :---: | :---: |
 | 2024/09/28 | [Web](2024/09/28#帰国したらやりたいことリスト) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2024/09/2024-09-28-.md#帰国したらやりたいことリスト) | [Reserved](https://github.com/noraworld/reserved-diary/blob/main/_posts/2024/09/2024-09-28-.md#帰国したらやりたいことリスト) | 帰国したらやりたいことリスト |
