@@ -22,9 +22,11 @@ permalink: /timeline
 
 | 分類 | 説明 |
 | :---: | --- |
-| Web | ウェブ版 ([Noraworld Diary](https://noraworld.github.io/diary/)) でアクセス可能なリンク |
-| Repo | リポジトリ版 ([noraworld/diary](https://github.com/noraworld/diary)) でアクセス可能なリンク |
-| Reserved | まだ公開されていない日記のリンク (筆者専用) |
+| Web | ウェブ版（[Noraworld Diary](https://noraworld.github.io/diary/)）でアクセス可能なリンク[^404-not-found] |
+| Repo | リポジトリ版（[noraworld/diary](https://github.com/noraworld/diary)）でアクセス可能なリンク[^404-not-found] |
+| Reserved | まだ公開されていない日記のリンク（筆者専用） |
+
+[^404-not-found]: まだ公開されていなくてもリンクとしては存在している（まだ公開されていない場合は 404 Not Found になる）点に注意。
 </details>
 
 | Date | Web | Repo | Reserved | Event |
