@@ -31,6 +31,7 @@ permalink: /timeline
 
 | Date | Web | Repo | Reserved | Event |
 | :---: | :---: | :---: | :---: | :---: |
+| 2025/01/22 | [Web](https://noraworld.github.io/diary/2025/01/22) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/01/2025-01-22-.md) | [Reserved](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/01/2025-01-22-.md) | 2 回目の根管治療のカウンセリングを受けた日 |
 | 2024/09/28 | [Web](https://noraworld.github.io/diary/2024/09/28) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2024/09/2024-09-28-.md) | [Reserved](https://github.com/noraworld/reserved-diary/blob/main/_posts/2024/09/2024-09-28-.md) | 帰国したらやりたいことリスト |
 | 2024/06/14 | [Web](https://noraworld.github.io/diary/2024/06/14) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2024/06/2024-06-14-.md) | [Reserved](https://github.com/noraworld/reserved-diary/blob/main/_posts/2024/06/2024-06-14-.md) | 炎上しても他人に批判されても他人の評価は気にせず自分の書きたいことを書くべきだと感じた日 |
 | 2024/02/02 | [Web](https://noraworld.github.io/diary/2024/02/02) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2024/02/2024-02-02-.md) | [Reserved](https://github.com/noraworld/reserved-diary/blob/main/_posts/2024/02/2024-02-02-.md) | マインドフルネスの重要性について改めて気づいた日 |
