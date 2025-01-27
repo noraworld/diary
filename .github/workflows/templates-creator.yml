@@ -59,11 +59,16 @@ jobs:
                        sed -e 's/^assignees: //g'           |
                        sed -e "s/[\"\']//g")
 
+            label=$(grep "labels: " "$issue_template" |
+                    sed -e 's/^labels: //g'           |
+                    sed -e "s/[\"\']//g")
+
             url=$(gh issue create           \
                     --repo "$TEMPLATE_REPO" \
                     --title "$title"        \
                     --body "$body"          \
-                    --assignee "$assignee")
+                    --assignee "$assignee"  \
+                    --label "$label")
 
             display_name=$(echo "$title" | cut -d '_' -f3)
             # https://chat.openai.com/share/0bb3dd50-70bb-4c09-8396-1f53824c3962
