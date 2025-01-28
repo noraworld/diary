@@ -31,6 +31,7 @@ permalink: /timeline
 
 | Date | Web | Repo | Reserved | Event |
 | :---: | :---: | :---: | :---: | :---: |
+| 2025/01/28 | [Web](https://noraworld.github.io/diary/2025/01/28) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/01/2025-01-28-.md) | [Reserved](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/01/2025-01-28-.md) | 右上の親知らずを抜歯した日 |
 | 2025/01/27 | [Web](https://noraworld.github.io/diary/2025/01/27) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/01/2025-01-27-.md) | [Reserved](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/01/2025-01-27-.md) | やることリストのテンプレートを統合して保存や管理が楽になった日 |
 | 2025/01/22 | [Web](https://noraworld.github.io/diary/2025/01/22) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/01/2025-01-22-.md) | [Reserved](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/01/2025-01-22-.md) | 2 回目の根管治療のカウンセリングを受けた日 |
 | 2024/09/28 | [Web](https://noraworld.github.io/diary/2024/09/28) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2024/09/2024-09-28-.md) | [Reserved](https://github.com/noraworld/reserved-diary/blob/main/_posts/2024/09/2024-09-28-.md) | 帰国したらやりたいことリスト |
