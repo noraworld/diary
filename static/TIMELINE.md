@@ -1,6 +1,6 @@
 ---
 layout: page
-title: タイムライン
+title: オレオレ年表
 permalink: /timeline
 
 # MEMO:
@@ -15,7 +15,7 @@ permalink: /timeline
 #   あとからつけることもできるし
 ---
 
-人生における年表のような記念日表のようなもの。
+人生における年表（自分史年表）のような記念日表のようなもの。
 
 <details>
 <summary>リンクについて</summary>
