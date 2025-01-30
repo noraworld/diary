@@ -18,8 +18,8 @@ on:
         #   instead of 'foo' in '${{ github.event.inputs.timezone || 'foo' }}'.
         #   See also Comment #2.
         default: 'Asia/Tokyo'
-  schedule:
-    - cron: '45 23 * * *'
+  # schedule:
+  #   - cron: '45 23 * * *'
 
 jobs:
   templates-closer:
