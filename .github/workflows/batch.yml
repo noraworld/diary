@@ -23,7 +23,7 @@ on:
 
 jobs:
   templates-closer:
-    uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
+    uses: noraworld/diary/.github/workflows/templates-closer.yml@main
     with:
       repo: noraworld/diary-templates
       # Comment #2
@@ -66,7 +66,7 @@ jobs:
 
   issue-changer:
     needs: wait-for-templates-closed
-    uses: noraworld/reserved-diary/.github/workflows/issue-changer.yml@main
+    uses: noraworld/diary/.github/workflows/issue-changer.yml@main
     with:
       main_repo: noraworld/reserved-diary
       template_repo: noraworld/diary-templates
@@ -76,7 +76,7 @@ jobs:
 
   templates-creator:
     needs: issue-changer
-    uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
+    uses: noraworld/diary/.github/workflows/templates-creator.yml@main
     with:
       main_repo: noraworld/reserved-diary
       template_repo: noraworld/diary-templates
@@ -86,7 +86,7 @@ jobs:
 
   private-templates-closer:
     needs: templates-creator
-    uses: noraworld/diary-templates/.github/workflows/templates-closer.yml@main
+    uses: noraworld/diary/.github/workflows/templates-closer.yml@main
     with:
       repo: noraworld/private-diary-templates
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
@@ -126,7 +126,7 @@ jobs:
 
   private-issue-changer:
     needs: private-wait-for-templates-closed
-    uses: noraworld/reserved-diary/.github/workflows/issue-changer.yml@main
+    uses: noraworld/diary/.github/workflows/issue-changer.yml@main
     with:
       main_repo: noraworld/private-diary
       template_repo: noraworld/private-diary-templates
@@ -136,7 +136,7 @@ jobs:
 
   private-templates-creator:
     needs: private-issue-changer
-    uses: noraworld/diary-templates/.github/workflows/templates-creator.yml@main
+    uses: noraworld/diary/.github/workflows/templates-creator.yml@main
     with:
       main_repo: noraworld/private-diary
       template_repo: noraworld/private-diary-templates
