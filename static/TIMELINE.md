@@ -31,6 +31,7 @@ permalink: /timeline
 
 | Date | Web | Repo | Rsvd | Event |
 | :---: | :---: | :---: | :---: | :---: |
+| 2025/02/01 | [Web](https://noraworld.github.io/diary/2025/02/01) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-02-01-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-02-01-.md) | ポケモンスリープをインストールした日 |
 | 2025/01/31 | [Web](https://noraworld.github.io/diary/2025/01/31) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/01/2025-01-31-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/01/2025-01-31-.md) | 初めて GitHub に支払い情報を追加した日 |
 | 2025/01/30 | [Web](https://noraworld.github.io/diary/2025/01/30) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/01/2025-01-30-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/01/2025-01-30-.md) | DoH や DoT について学び新たに設定を追加した日 |
 | 2025/01/28 | [Web](https://noraworld.github.io/diary/2025/01/28) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/01/2025-01-28-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/01/2025-01-28-.md) | 右上の親知らずを抜歯した日 |
