@@ -25,6 +25,8 @@ permalink: /subscriptions
 | サービス名 | 自動更新 | 料金 | データの保持[^data] | 要否 | 有効期限 | 支払周期 |
 | --- | :---: | ---: | :---: | :---: | --- | --- |
 | あすけん | YES | ¥3,600 | NO | YES | 使わなくなるまで | 年額 |
+| [プロテイン](https://frombanana.com/shop/products/hfp002) | YES | ¥9,677 | NO | YES | なし | 月額 |
+| [サフランカプセル](https://jp.iherb.com/pr/life-extension-optimized-saffron-88-25-mg-60-vegetarian-capsules/23953) | YES | ¥4,077 | NO | YES | なし | 隔月 |
 
 
 
