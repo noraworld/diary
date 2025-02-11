@@ -31,6 +31,7 @@ permalink: /timeline
 
 | Date | Web | Repo | Rsvd | Event |
 | :---: | :---: | :---: | :---: | :---: |
+| 2025/02/11 | [Web](https://noraworld.github.io/diary/2025/02/11) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-02-11-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-02-11-.md) | [Issue Recorder](https://github.com/noraworld/issue-recorder) のバージョンを `v0.4.0` に上げた日 |
 | 2025/02/10 | [Web](https://noraworld.github.io/diary/2025/02/10) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-02-10-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-02-10-.md) | [Issue Recorder](https://github.com/noraworld/issue-recorder) の画像アップロード機能を実際に導入した日 |
 | 2025/02/08 | [Web](https://noraworld.github.io/diary/2025/02/08) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-02-08-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-02-08-.md) | 一日中ぶっとおしで GitHub Issues の画像をリポジトリに保存して参照できるようにする開発をしていた日 |
 | 2025/02/04 | [Web](https://noraworld.github.io/diary/2025/02/04) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-02-04-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-02-04-.md) | いろんな人と関わったり話したりすることや日中に外に出ることがメンタルの改善に大きく役立つかもと改めて思った日 |
