@@ -47,7 +47,6 @@ permalink: /subscriptions
 | サービス名 | 自動更新 | 料金 | データの保持[^data] | 要否 | 有効期限 | 支払周期 |
 | --- | :---: | ---: | :---: | :---: | --- | --- |
 | Nintendo Switch Online | YES | [¥2,400](https://www.nintendo.co.jp/hardware/switch/onlineservice/pricing/index.html) | YES[^do_not_care] | NO | 使わなくなるまで | 年額 |
-| YouTube Premium | NO | ¥1,280 | NO | NO | 使わなくなるまで | 月額 |
 
 
 
@@ -76,6 +75,7 @@ permalink: /subscriptions
 
 | サービス名 | 自動更新 | 料金 | データの保持[^data] | 要否 | 有効期限 | 支払周期 |
 | --- | :---: | ---: | :---: | :---: | --- | --- |
+| YouTube Premium | NO | ¥1,280 | NO | NO | 2025/03/09 | 月額 |
 | Zenhub | NO | [$12.50](https://www.zenhub.com/pricing) | 部分的 | NO | 2024/04/07 | 月額 |
 | Amazon Prime | NO | [¥600](https://www.amazon.co.jp/gp/primecentral) | NO | NO | 2024/03/31 | 月額 |
 | Kindle Unlimited | NO | [¥980](https://www.amazon.co.jp/yourmembershipsandsubscriptions) | NO | NO | 2024/04/25 | 月額 |
