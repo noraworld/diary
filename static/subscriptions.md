@@ -70,6 +70,7 @@ permalink: /subscriptions
 
 
 ## 契約終了予定・終了済
+
 <details>
 
 | サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
