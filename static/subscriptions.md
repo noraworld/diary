@@ -36,8 +36,10 @@ permalink: /subscriptions
 | サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | Money Forward | [¥5,300](https://support.me.moneyforward.com/hc/ja/articles/4409828451993-%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E6%96%99%E9%87%91%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84) | 年額 | NO |  |  |
-| ChatGPT Plus | $22 | 月額 | NO |  |  |
 | IFTTT Pro | $2.92 | 月額 | NO |  |  |
+| ChatGPT Plus | $22.00 | 月額 | NO |  |  |
+| ChatGPT API | TBA | 月額 | NO |  |  |
+| GitHub Actions | <= $10.00 | 月額 | NO |  |  |
 
 
 
