@@ -31,6 +31,7 @@ permalink: /timeline
 
 | Date | Web | Repo | Rsvd | Event |
 | :---: | :---: | :---: | :---: | :---: |
+| 2025/02/23 | [Web](https://noraworld.github.io/diary/2025/02/23) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-02-23-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-02-23-.md) | 過去の日記の画像のリンク切れを解消した日 |
 | 2025/02/22 | [Web](https://noraworld.github.io/diary/2025/02/22) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-02-22-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-02-22-.md) | ついに AWS Lightsail を解約した日 |
 | 2025/02/14 | [Web](https://noraworld.github.io/diary/2025/02/14) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-02-14-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-02-14-.md) | バーに行ってみようかなとちょっと思った日 |
 | 2025/02/11 | [Web](https://noraworld.github.io/diary/2025/02/11) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-02-11-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-02-11-.md) | [Issue Recorder](https://github.com/noraworld/issue-recorder) のバージョンを `v0.4.0` に上げた日 |
