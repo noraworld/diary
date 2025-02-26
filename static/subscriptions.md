@@ -11,21 +11,21 @@ permalink: /subscriptions
 
 ## インフラ
 
-| サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
+| サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
-| noraworld.com | [$30.16](https://dcc.godaddy.com/control/noraworld.com/settings) | 年額 | NO |  |  |
+| noraworld.com | [$2.51](https://dcc.godaddy.com/control/noraworld.com/settings) | 年額 | NO |  |  |
 | Google Workspace Business Plus | [¥2,500](https://workspace.google.co.jp/pricing?hl=ja) | 月額 | **YES** |  |  |
 | iCloud | [¥450](https://support.apple.com/ja-jp/HT201238) | 月額 | **YES** |  |  |
-| 1Password | [$35.88](https://1password.com/sign-up/) | 年額 | **YES** |  |  |
+| 1Password | [$2.99](https://1password.com/sign-up/) | 年額 | **YES** |  |  |
 | Amazon Web Services | [変動](https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/) | 月額 | **YES** |  |  |
 
 
 
 ## ヘルスケア
 
-| サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
+| サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
-| あすけん | [¥3,600](https://www.asken.jp/info/3857) | 年額 | NO |  |  |
+| あすけん | [¥300](https://www.asken.jp/info/3857) | 年額 | NO |  |  |
 | プロテイン | [¥9,677](https://frombanana.com/shop/products/hfp002) | 月額 | NO |  |  |
 | サフランカプセル | [¥4,077](https://jp.iherb.com/pr/life-extension-optimized-saffron-88-25-mg-60-vegetarian-capsules/23953) | 隔月 | NO |  |  |
 
@@ -33,10 +33,10 @@ permalink: /subscriptions
 
 ## ユーティリティ
 
-| サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
+| サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
-| Money Forward | [¥5,300](https://support.me.moneyforward.com/hc/ja/articles/4409828451993-%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E6%96%99%E9%87%91%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84) | 年額 | NO |  |  |
-| IFTTT Pro | [$2.92](https://ifttt.com/plans) | 月額 | NO |  |  |
+| Money Forward | [¥442](https://support.me.moneyforward.com/hc/ja/articles/4409828451993-%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E6%96%99%E9%87%91%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84) | 年額 | NO |  |  |
+| IFTTT Pro | [$2.99](https://ifttt.com/plans) | 月額 | NO |  |  |
 | ChatGPT Plus | [$22.00](https://openai.com/chatgpt/pricing/) | 月額 | NO |  |  |
 | ChatGPT API | [TBA](https://openai.com/api/pricing/) | 月額 | NO |  |  |
 | GitHub Actions | [<=$10.00](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions) | 月額 | NO |  |  |
@@ -45,15 +45,15 @@ permalink: /subscriptions
 
 ## エンターテインメント
 
-| サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
+| サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
-| Nintendo Switch Online | [¥2,400](https://www.nintendo.co.jp/hardware/switch/onlineservice/pricing/index.html) | 年額 | YES[^do_not_care] |  |  |
+| Nintendo Switch Online | [¥200](https://www.nintendo.co.jp/hardware/switch/onlineservice/pricing/index.html) | 年額 | YES[^do_not_care] |  |  |
 
 
 
 ## 学習サービス
 
-| サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
+| サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | D ラボ | [¥2,200](https://info.daigovideolab.jp/price) | 月額 | NO |  | 2025/03/07 |
 
@@ -61,7 +61,7 @@ permalink: /subscriptions
 
 ## ライフライン
 
-| サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
+| サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | 家賃 | ¥93,100 | 月額 | NO |  |  |
 | 光熱費 | 変動 | 月額 | NO |  |  |
@@ -101,3 +101,5 @@ permalink: /subscriptions
 [^data]: そのサブスクでデータが管理されているかどうか。アカウント自体にデータが格納されているかどうかではない。サブスクをキャンセルしたときにデータを失う可能性があるかどうか。
 
 [^do_not_care]: サブスクを解除すると失われるデータが存在するが YouTube に動画が保存されているのでデータの消失について気にする必要はない。
+
+[^monthly]: 年額支払いのものでも月額換算（÷ 12）している。
