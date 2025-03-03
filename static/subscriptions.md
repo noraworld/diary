@@ -20,6 +20,13 @@ permalink: /subscriptions
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | あすけん | [¥300](https://www.asken.jp/info/3857) | 年額 | NO |  |  |
+
+
+
+## 定期便
+
+| サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
+| :---: | ---: | :---: | :---: | :---: | :---: |
 | プロテイン | [¥9,677](https://frombanana.com/shop/products/hfp002) | 月額 | NO |  |  |
 | サフランカプセル | [¥4,077](https://jp.iherb.com/pr/life-extension-optimized-saffron-88-25-mg-60-vegetarian-capsules/23953) | 隔月 | NO |  |  |
 
