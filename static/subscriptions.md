@@ -46,7 +46,6 @@ permalink: /subscriptions
 
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
-| Nintendo Switch Online | [¥200](https://www.nintendo.co.jp/hardware/switch/onlineservice/pricing/index.html) | 年額 | YES[^do_not_care] |  |  |
 
 
 
@@ -79,6 +78,7 @@ permalink: /subscriptions
 | サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | Amazon Web Services | [変動](https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/) | 月額 | YES[^backed_up] | 2020/01/01 | 2025/03/31 |
+| Nintendo Switch Online | [¥200](https://www.nintendo.co.jp/hardware/switch/onlineservice/pricing/index.html) | 年額 | YES[^do_not_care] |  | 2025/12/30 |
 | NordVPN | TBA | 隔年 | NO |  | 2025/06/07 |
 | Uber One | ¥498 | 月額 | NO |  | 2025/03/12 |
 | YouTube Premium | ¥1,280 | 月額 | NO |  | 2025/03/09 |
