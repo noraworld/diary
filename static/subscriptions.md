@@ -55,6 +55,7 @@ permalink: /subscriptions
 
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
+| Cambly | [17,300](https://www.cambly.com/en/subscribe) | 年額 | NO |  |  |
 | D ラボ | [¥2,200](https://info.daigovideolab.jp/price) | 月額 | NO |  | 2025/03/07 |
 
 
