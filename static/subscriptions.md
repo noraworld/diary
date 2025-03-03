@@ -14,7 +14,7 @@ permalink: /subscriptions
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | noraworld.com | [$2.51](https://dcc.godaddy.com/control/noraworld.com/settings) | 年額 | NO |  |  |
-| Google Workspace Business Plus | [¥2,500](https://workspace.google.co.jp/pricing?hl=ja) | 月額 | **YES** |  |  |
+| Google Workspace Business Plus | [¥2,693](https://workspace.google.co.jp/pricing?hl=ja) | 月額 | **YES** |  |  |
 | iCloud | [¥450](https://support.apple.com/ja-jp/HT201238) | 月額 | **YES** |  |  |
 | 1Password | [$2.99](https://1password.com/sign-up/) | 年額 | **YES** |  |  |
 
