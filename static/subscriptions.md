@@ -17,7 +17,6 @@ permalink: /subscriptions
 | Google Workspace Business Plus | [¥2,500](https://workspace.google.co.jp/pricing?hl=ja) | 月額 | **YES** |  |  |
 | iCloud | [¥450](https://support.apple.com/ja-jp/HT201238) | 月額 | **YES** |  |  |
 | 1Password | [$2.99](https://1password.com/sign-up/) | 年額 | **YES** |  |  |
-| Amazon Web Services | [変動](https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/) | 月額 | **YES** |  |  |
 
 
 
@@ -79,6 +78,7 @@ permalink: /subscriptions
 
 | サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
+| Amazon Web Services | [変動](https://us-east-1.console.aws.amazon.com/billing/home?region=us-east-1#/) | 月額 | YES[^backed_up] | 2020/01/01 | 2025/03/31 |
 | NordVPN | TBA | 隔年 | NO |  | 2025/06/07 |
 | Uber One | ¥498 | 月額 | NO |  | 2025/03/12 |
 | YouTube Premium | ¥1,280 | 月額 | NO |  | 2025/03/09 |
@@ -102,5 +102,7 @@ permalink: /subscriptions
 [^data]: そのサブスクでデータが管理されているかどうか。アカウント自体にデータが格納されているかどうかではない。サブスクをキャンセルしたときにデータを失う可能性があるかどうか。
 
 [^do_not_care]: サブスクを解除すると失われるデータが存在するが YouTube に動画が保存されているのでデータの消失について気にする必要はない。
+
+[^backed_up]: すでにバックアップ済みなので問題なし。
 
 [^monthly]: 年額支払いのものでも月額換算（÷ 12）している。
