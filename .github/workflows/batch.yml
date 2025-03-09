@@ -22,7 +22,13 @@ on:
     - cron: '45 23 * * *'
 
 jobs:
+  comments-transferor-force:
+    uses: noraworld/social-media-recorder/.github/workflows/comments-transferor.yml@main
+    secrets:
+      gh_token: ${{ secrets.GH_TOKEN }}
+
   templates-closer:
+    needs: comments-transferor-force
     uses: noraworld/diary/.github/workflows/templates-closer.yml@main
     with:
       repo: noraworld/diary-templates
