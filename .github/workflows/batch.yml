@@ -23,7 +23,7 @@ on:
 
 jobs:
   comments-transferor-force:
-    uses: noraworld/social-media-recorder/.github/workflows/comments-transferor.yml@main
+    uses: noraworld/social-media-recorder/.github/workflows/comments-transferor-force.yml@main
     secrets:
       gh_token: ${{ secrets.GH_TOKEN }}
 
