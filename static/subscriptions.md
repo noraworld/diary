@@ -48,6 +48,7 @@ permalink: /subscriptions
 
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
+| YouTube Premium | [¥1,067](https://music.youtube.com/youtube_premium) | 年額 | NO | 2025/03/11 | 2026/03/11 |
 
 
 
