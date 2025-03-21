@@ -7,7 +7,6 @@ on:
         required: true
         description: '備考'
         type: string
-        default: '特になし。'
 
 jobs:
   build:
@@ -26,6 +25,8 @@ jobs:
                              --json title,url \
                              --template '{{range.}}* [{{.title}}]({{.url}}){{"\r\n"}}{{end}}' |
                              tac
+                         elif [ "$line" = "<ここに備考を挿入>" ]; then
+                           echo "${{ github.event.inputs.remarks || '特になし。' }}"
                          else
                            echo "$line"
                          fi
