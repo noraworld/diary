@@ -1,6 +1,13 @@
 name: Pile
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      remarks:
+        required: true
+        description: '備考'
+        type: string
+        default: '特になし。'
 
 jobs:
   build:
