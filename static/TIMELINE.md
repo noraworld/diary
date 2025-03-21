@@ -31,6 +31,7 @@ permalink: /timeline
 
 | Date | Web | Repo | Rsvd | Event |
 | :---: | :---: | :---: | :---: | :---: |
+| 2025/03/21 | [Web](https://noraworld.github.io/diary/2025/03/21) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-03-21-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-03-21-.md) | お題箱のアカウントを作った日 |
 | 2025/03/09 | [Web](https://noraworld.github.io/diary/2025/03/09) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-03-09-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-03-09-.md) | 所得税・消費税の口座振替をした日 |
 | 2025/03/08 | [Web](https://noraworld.github.io/diary/2025/03/08) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-03-08-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-03-08-.md) | 確定申告をはじめて行った日 |
 | 2025/03/07 | [Web](https://noraworld.github.io/diary/2025/03/07) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-03-07-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-03-07-.md) | IFTTT と連携させて Misskey を本格始動した日 |
