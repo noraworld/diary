@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       remarks:
-        required: true
+        required: false
         description: '備考'
         type: string
 
