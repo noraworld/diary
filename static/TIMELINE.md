@@ -31,6 +31,7 @@ permalink: /timeline
 
 | Date | Web | Repo | Rsvd | Event |
 | :---: | :---: | :---: | :---: | :---: |
+| 2025/03/28 | [Web](https://noraworld.github.io/diary/2025/03/28) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-03-28-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-03-28-.md) | [Jekyll Build Pages](https://github.com/noraworld/jekyll-build-pages) をとりあえず公開した日 |
 | 2025/03/22 | [Web](https://noraworld.github.io/diary/2025/03/22) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-03-22-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-03-22-.md) | GitHub Pages 版の技術記事ブログを復活させた日 |
 | 2025/03/21 | [Web](https://noraworld.github.io/diary/2025/03/21) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-03-21-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-03-21-.md) | お題箱のアカウントを作った日 |
 | 2025/03/09 | [Web](https://noraworld.github.io/diary/2025/03/09) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-03-09-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-03-09-.md) | 所得税・消費税の口座振替をした日 |
