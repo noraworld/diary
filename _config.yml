@@ -47,6 +47,7 @@ commonmark:
 plugins:
   - jekyll-commonmark
   - jekyll-feed
+  - jekyll-paginate
   - jekyll-remote-theme
 
 timezone: Asia/Tokyo
