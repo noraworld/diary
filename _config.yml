@@ -91,3 +91,11 @@ collections:
     output: true
   daily_report:
     output: true
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
