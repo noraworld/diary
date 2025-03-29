@@ -40,7 +40,12 @@ paginate_path: /page/:num
 
 # Build settings
 remote_theme: daattali/beautiful-jekyll
+markdown: CommonMark
+commonmark:
+  options: ["UNSAFE", "SMART", "FOOTNOTES"]
+  extensions: ["strikethrough", "autolink", "table", "tagfilter"]
 plugins:
+  - jekyll-commonmark
   - jekyll-feed
   - jekyll-remote-theme
 
