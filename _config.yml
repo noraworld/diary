@@ -77,6 +77,7 @@ exclude:
   - _daily_report/.git/
   - TEMPLATES.md
   - templates/
+  - jekyll-build-pages
 
 # for local network
 collections:
