@@ -19,7 +19,7 @@ on:
         #   See also Comment #2.
         default: 'Asia/Tokyo'
   schedule:
-    - cron: '45 23 * * *'
+    - cron: '45 17 * * *'
 
 jobs:
   comments-transferor-force:
