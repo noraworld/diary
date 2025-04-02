@@ -5,7 +5,6 @@ permalink: /subscriptions
 ---
 
 ## インフラ
-
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | noraworld.com | [$2.51](https://dcc.godaddy.com/control/noraworld.com/settings) | 年額 | NO |  |  |
@@ -16,7 +15,6 @@ permalink: /subscriptions
 
 
 ## ヘルスケア
-
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | あすけん | [¥300](https://www.asken.jp/info/3857) | 年額 | NO |  |  |
@@ -24,7 +22,6 @@ permalink: /subscriptions
 
 
 ## 定期便
-
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | プロテイン | [¥9,677](https://frombanana.com/shop/products/hfp002) | 月額 | NO |  |  |
@@ -33,7 +30,6 @@ permalink: /subscriptions
 
 
 ## ユーティリティ
-
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | Money Forward | [¥442](https://support.me.moneyforward.com/hc/ja/articles/4409828451993-%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E6%96%99%E9%87%91%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6%E6%95%99%E3%81%88%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84) | 年額 | NO |  |  |
@@ -45,7 +41,6 @@ permalink: /subscriptions
 
 
 ## エンターテインメント
-
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | YouTube Premium | [¥1,067](https://music.youtube.com/youtube_premium) | 年額 | NO | 2025/03/11 | 2026/03/11 |
@@ -53,7 +48,6 @@ permalink: /subscriptions
 
 
 ## 学習サービス
-
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | Cambly | [¥17,300](https://www.cambly.com/en/subscribe) | 年額 | NO |  |  |
@@ -62,7 +56,6 @@ permalink: /subscriptions
 
 
 ## ライフライン
-
 | サービス名 | 月額料金[^monthly] | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
 | :---: | ---: | :---: | :---: | :---: | :---: |
 | 家賃 | ¥93,100 | 月額 | NO |  |  |
@@ -76,7 +69,6 @@ permalink: /subscriptions
 
 
 ## 契約終了予定・終了済
-
 <details>
 
 | サービス名 | 料金 | 支払周期 | データの保持[^data] | 契約開始日 | 契約終了日 |
