@@ -10,6 +10,7 @@ const octokit = new Octokit({ auth: githubToken })
 const repository = process.env.REPO
 const [ owner, repo ] = repository.split('/')
 
+const useApi = false
 const man = 10000
 const totalPrefectures = 47
 const averageWorkingHours = 8
@@ -57,6 +58,16 @@ async function getAverageWage() {
   }
 }
 
+// from https://github.com/noraworld/daily-report-templates/issues/400 (last results from API)
+function getAverageWageStub() {
+  return {
+    hourly:  2_185,
+    daily:   17_478,
+    monthly: 349_556,
+    annual:  4_194_674
+  }
+}
+
 function getMyWage() {
   return {
     hourly:  myAnnual * man / totalMonths / averageWorkingDays / averageWorkingHours,
@@ -84,7 +95,7 @@ async function getIssueBody() {
 }
 
 async function updateIssueBody(number, body) {
-  const wage = await getAverageWage()
+  const wage = useApi ? await getAverageWage() : getAverageWageStub()
   const updatedBody = body
     .replaceAll(/{{MY_HOURLY}}/g,       Math.round(getMyWage().hourly).toLocaleString())
     .replaceAll(/{{MY_DAILY}}/g,        Math.round(getMyWage().daily).toLocaleString())
