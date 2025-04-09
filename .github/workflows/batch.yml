@@ -19,6 +19,10 @@ on:
         #   See also Comment #2.
         default: 'Asia/Tokyo'
   schedule:
+    # Read this if you want to delay the time to change the diary issues.
+    #   https://github.com/noraworld/reserved-diary/issues/708#issuecomment-2790207338
+    #   https://github.com/noraworld/reserved-diary/issues/708#issuecomment-2790217630
+    #   https://github.com/noraworld/reserved-diary/issues/708#issuecomment-2790220599
     - cron: '45 17 * * *'
 
 jobs:
