@@ -23,7 +23,7 @@ on:
     #   https://github.com/noraworld/reserved-diary/issues/708#issuecomment-2790207338
     #   https://github.com/noraworld/reserved-diary/issues/708#issuecomment-2790217630
     #   https://github.com/noraworld/reserved-diary/issues/708#issuecomment-2790220599
-    - cron: '45 17 * * *'
+    - cron: '45 17 * * *' # 2:45 JST
 
 jobs:
   comments-transferor-force:
