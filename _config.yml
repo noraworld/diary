@@ -85,6 +85,11 @@ exclude:
   - TEMPLATES.md
   - templates/
   - jekyll-build-pages
+  - day-off.py
+  - day-off.json
+  - Pipfile.lock
+  - Pipfile
+  - .python-version
 
 # for local network
 collections:
