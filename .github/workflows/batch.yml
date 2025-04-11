@@ -31,6 +31,7 @@ on:
     - cron: '45 16 * * *' # 1:45 JST
 
 jobs:
+  # reserved-diary
   comments-transferor-force:
     uses: noraworld/social-media-recorder/.github/workflows/comments-transferor-force.yml@main
     secrets:
@@ -99,6 +100,9 @@ jobs:
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
+
+
+  # private-diary
   private-templates-closer:
     needs: templates-creator
     uses: noraworld/diary/.github/workflows/templates-closer.yml@main
