@@ -162,13 +162,13 @@ jobs:
 
 
   # daily-report
-  day-off:
+  daily-report-day-off:
     uses: noraworld/daily-report-templates/.github/workflows/day-off.yml@main
     with:
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
 
   daily-report-templates-closer:
-    needs: day-off
+    needs: daily-report-day-off
     uses: noraworld/diary/.github/workflows/templates-closer.yml@main
     with:
       repo: noraworld/daily-report-templates
@@ -227,7 +227,7 @@ jobs:
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
-  wage:
+  daily-report-wage:
     needs: daily-report-templates-creator
     uses: noraworld/daily-report-templates/.github/workflows/wage.yml@main
     with:
