@@ -8,3 +8,6 @@ bin
 # for local network
 _private/
 _daily_report/
+
+.env
+node_modules
