@@ -14,6 +14,7 @@ on:
         required: false
         description: '現在の課題を整理したか'
         type: boolean
+        default: true
       remarks:
         required: false
         description: '備考'
