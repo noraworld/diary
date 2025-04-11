@@ -167,7 +167,7 @@ jobs:
 
   # daily-report
   daily-report-day-off:
-    uses: noraworld/daily-report-templates/.github/workflows/day-off.yml@main
+    uses: noraworld/diary/.github/workflows/day-off.yml@main
     with:
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
 
