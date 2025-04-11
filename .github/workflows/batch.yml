@@ -233,7 +233,7 @@ jobs:
 
   daily-report-wage:
     needs: daily-report-templates-creator
-    uses: noraworld/daily-report-templates/.github/workflows/wage.yml@main
+    uses: noraworld/diary/.github/workflows/wage.yml@main
     with:
       my_annual: ${{ github.event.inputs.my_annual || '864' }}
     secrets:
