@@ -18,6 +18,11 @@ on:
         #   instead of 'foo' in '${{ github.event.inputs.timezone || 'foo' }}'.
         #   See also Comment #2.
         default: 'Asia/Tokyo'
+      my_annual:
+        required: true
+        description: 'My annual'
+        type: string
+        default: '864'
   schedule:
     # Read this if you want to delay the time to change the diary issues.
     #   https://github.com/noraworld/reserved-diary/issues/708#issuecomment-2790207338
@@ -153,3 +158,80 @@ jobs:
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
+
+
+
+  # daily-report
+  day-off:
+    uses: noraworld/daily-report-templates/.github/workflows/day-off.yml@main
+    with:
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+
+  daily-report-templates-closer:
+    needs: day-off
+    uses: noraworld/diary/.github/workflows/templates-closer.yml@main
+    with:
+      repo: noraworld/daily-report-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+      date_check: false
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
+  daily-report-wait-for-templates-closed:
+    needs: daily-report-templates-closer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Check if all of the templates have successfully been closed
+        run: |
+          trial=0
+
+          # Wait for all of the templates to be closed.
+          while [ "$(gh issue list --repo "noraworld/daily-report-templates" | wc -l)" -ne 0 ]; do
+            # The shorter the sleep interval is, the more frequently the error below may occur.
+            #   GraphQL: was submitted too quickly (createIssue)
+            sleep 15
+
+            trial=$(($trial + 1))
+            if [ "$trial" -gt 5 ]; then
+              echo "Timeout period exceeded." >&2
+              exit 1
+            fi
+          done
+
+          # To avoid causing the error. Just in case.
+          sleep 30
+        shell: sh
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  daily-report-issue-changer:
+    needs: daily-report-wait-for-templates-closed
+    uses: noraworld/diary/.github/workflows/issue-changer.yml@main
+    with:
+      main_repo: noraworld/daily-report
+      template_repo: noraworld/daily-report-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
+  daily-report-templates-creator:
+    needs: daily-report-issue-changer
+    uses: noraworld/diary/.github/workflows/templates-creator.yml@main
+    with:
+      main_repo: noraworld/daily-report
+      template_repo: noraworld/daily-report-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
+  wage:
+    needs: daily-report-templates-creator
+    uses: noraworld/daily-report-templates/.github/workflows/wage.yml@main
+    with:
+      my_annual: ${{ github.event.inputs.my_annual || '864' }}
+    secrets:
+      gh_token: ${{ secrets.GH_TOKEN }}
+      resas_api_key: ${{ secrets.RESAS_API_KEY }}
