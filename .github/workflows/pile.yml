@@ -3,6 +3,13 @@ name: Pile
 on:
   workflow_dispatch:
     inputs:
+      target:
+        required: true
+        description: '対象'
+        type: choice
+        options:
+          - 'プライベート'
+          - '仕事'
       remarks:
         required: false
         description: '備考'
@@ -14,13 +21,32 @@ jobs:
     steps:
       - name: Comment a pile template
         run: |
-          template=$(gh api "/repos/noraworld/diary-templates/contents/.github/ISSUE_TEMPLATE/11--pile.md" --jq .content |
+          case "${{ github.event.inputs.target }}" in
+            "プライベート")
+              TEMPLATE_REPO="noraworld/diary-templates"
+              TEMPLATE_PATH=".github/ISSUE_TEMPLATE/11--pile.md"
+              TASK_REPO="noraworld/to-do"
+              SEARCH_QUERY="pile 翌日やること整理"
+              ;;
+            "仕事")
+              TEMPLATE_REPO="noraworld/daily-report-templates"
+              TEMPLATE_PATH=".github/ISSUE_TEMPLATE/pile.md"
+              TASK_REPO="noraworld/work-scraps"
+              SEARCH_QUERY="翌営業日にやること整理"
+              ;;
+            *)
+              echo "ERROR: invalid target" >&2
+              exit 1
+              ;;
+          esac
+
+          template=$(gh api "/repos/$TEMPLATE_REPO/contents/$TEMPLATE_PATH" --jq .content |
                        base64 --decode |
                        awk '/^```/{f++; next} f==1' |
                        while IFS= read -r line; do
                          if [ "$line" = "<ここにやることを挿入>" ]; then
                            gh issue list \
-                             --repo noraworld/to-do \
+                             --repo $TASK_REPO \
                              --search "label:today,tomorrow" \
                              --json title,url \
                              --template '{{range.}}* [{{.title}}]({{.url}}){{"\r\n"}}{{end}}' |
@@ -33,12 +59,12 @@ jobs:
                        done)
 
             issue_number=$(gh issue list \
-                             --repo noraworld/diary-templates \
-                             --search "pile 翌日やること整理" |
+                             --repo $TEMPLATE_REPO \
+                             --search "$SEARCH_QUERY" |
                              awk '{ print $1 }')
 
             gh issue comment "$issue_number" \
-              --repo noraworld/diary-templates \
+              --repo $TEMPLATE_REPO \
               --body "$template"
         shell: sh
         env:
