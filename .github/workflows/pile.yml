@@ -8,8 +8,10 @@ on:
         description: '対象'
         type: choice
         options:
+          - ''
           - 'プライベート'
           - '仕事'
+        default: ''
       arranged:
         required: false
         description: '現在の課題を整理したか'
