@@ -8,6 +8,7 @@ import re
 
 DATE_DELIMITER_REGEXP = '[\/\-]'
 DAY_OFF_JSON = 'day-off.json'
+WEEKLY_OFF_DAYS = ['Saturday', 'Sunday']
 
 class Util:
     def full_date(date_str):
@@ -33,6 +34,10 @@ class DayOffError(Exception):
     def __str__(self):
         return 'today is a day off!'
 
+class WeeklyOffError(Exception):
+    def __str__(self):
+        return 'today is a weekly off!'
+
 if __name__ == '__main__':
     if os.path.isfile(DAY_OFF_JSON):
         file = open(DAY_OFF_JSON)
@@ -45,3 +50,6 @@ if __name__ == '__main__':
 
     if jpholiday.is_holiday(datetime.date.today()) is True:
         raise HolidayError
+
+    if (datetime.date.today().strftime('%A') in WEEKLY_OFF_DAYS) is True:
+        raise WeeklyOffError
