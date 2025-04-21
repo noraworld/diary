@@ -43,7 +43,7 @@ remote_theme: daattali/beautiful-jekyll
 markdown: CommonMark
 commonmark:
   options: ["UNSAFE", "SMART", "FOOTNOTES"]
-  extensions: ["strikethrough", "autolink", "table", "tagfilter"]
+  extensions: ["strikethrough", "autolink", "table", "tasklist"]
 plugins:
   - jekyll-commonmark
   - jekyll-feed
