@@ -31,6 +31,7 @@ permalink: /timeline
 
 | Date | Web | Repo | Rsvd | Event |
 | :---: | :---: | :---: | :---: | :---: |
+| 2025/04/21 | [Web](https://noraworld.github.io/diary/2025/04/21) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-04-21-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-04-21-.md) | Jekyll の GitHub Actions への移行が一通り完了した日 |
 | 2025/04/13 | [Web](https://noraworld.github.io/diary/2025/04/13) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-04-13-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-04-13-.md) | SNS への投稿を GitHub のコメントからできるようにした日 |
 | 2025/04/07 | [Web](https://noraworld.github.io/diary/2025/04/07) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-04-07-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-04-07-.md) | しずかなインターネットにアカウントを作った日 |
 | 2025/04/05 | [Web](https://noraworld.github.io/diary/2025/04/05) | [Repo](https://github.com/noraworld/diary/blob/main/_posts/2025/02/2025-04-05-.md) | [Rsvd](https://github.com/noraworld/reserved-diary/blob/main/_posts/2025/02/2025-04-05-.md) | Issue から画像を保存する GitHub Actions を作った日 |
