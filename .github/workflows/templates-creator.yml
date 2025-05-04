@@ -9,6 +9,9 @@ on:
       template_repo:
         required: true
         type: string
+      issue_template_repo:
+        required: true
+        type: string
       timezone:
         required: true
         type: string
@@ -23,7 +26,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          repository: ${{ inputs.template_repo }}
+          repository: ${{ inputs.issue_template_repo }}
           ref: main
           token: ${{ secrets.token }}
           path: tmp

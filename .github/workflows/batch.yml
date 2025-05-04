@@ -96,6 +96,7 @@ jobs:
     with:
       main_repo: noraworld/reserved-diary
       template_repo: noraworld/diary-templates
+      issue_template_repo: noraworld/diary-templates-assistant
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
@@ -159,6 +160,7 @@ jobs:
     with:
       main_repo: noraworld/private-diary
       template_repo: noraworld/private-diary-templates
+      issue_template_repo: noraworld/private-diary-templates
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
@@ -227,6 +229,7 @@ jobs:
     with:
       main_repo: noraworld/daily-report
       template_repo: noraworld/daily-report-templates
+      issue_template_repo: noraworld/daily-report-templates
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
