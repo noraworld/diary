@@ -73,7 +73,7 @@ jobs:
                     --assignee "$assignee"  \
                     --label "$label")
 
-            display_name=$(echo "$title" | cut -d '_' -f3)
+            display_name=$(echo "$title" | cut -d '_' -f4)
             # https://chat.openai.com/share/0bb3dd50-70bb-4c09-8396-1f53824c3962
             escaped_url=$(echo "$url" | sed 's/[\^\$\.\/]/\\&/g')
             diary_issue_body=$(echo "$diary_issue_body" | sed -E "s/$display_name/\[$display_name\]\($escaped_url\)/g")

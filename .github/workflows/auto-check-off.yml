@@ -22,9 +22,9 @@ jobs:
       !contains(github.event.issue.labels.*.name, 'yet')
     runs-on: ubuntu-latest
     steps:
-      # "2024-03-05_sleep_睡眠記録" => "睡眠記録"
+      # "💤_2025-05-10_sleep_睡眠記録" => "睡眠記録"
       - name: Get a title
-        run: echo "TITLE=$(cut -d '_' -f3 <<< "${{ github.event.issue.title }}")" >> $GITHUB_ENV
+        run: echo "TITLE=$(cut -d '_' -f4 <<< "${{ github.event.issue.title }}")" >> $GITHUB_ENV
 
       - name: Check if off
         run: |
