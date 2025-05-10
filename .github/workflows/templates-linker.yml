@@ -37,17 +37,16 @@ jobs:
           diary_issue_body=$(gh issue view --repo "$MAIN_REPO" --json body --jq .body "$DIARY_ISSUE_NUMBER")
           issue_list=$(gh issue list --repo "$TEMPLATE_REPO" --json title,url --template '{{range .}}{{.title}} {{.url}}{{"\n"}}{{end}}')
 
-          echo "$issue_list" | while IFS= read -r line; do
+          while IFS= read -r line; do
             display_name=$(echo "$line" | awk '{ print $1 }' | cut -d '_' -f4)
-            echo "DEBUG: display_name = $display_name"
             # https://chat.openai.com/share/0bb3dd50-70bb-4c09-8396-1f53824c3962
             escaped_url=$(echo "$line" | awk '{ print $2 }' | sed 's/[\^\$\.\/]/\\&/g')
-            echo "DEBUG: escaped_url = $escaped_url"
             diary_issue_body=$(echo "$diary_issue_body" | sed -E "s/$display_name/\[$display_name\]\($escaped_url\)/g")
-            echo "DEBUG: diary_issue_body = $diary_issue_body"
-          done
+          done <<< "$issue_list"
 
-          gh issue edit --repo "$MAIN_REPO" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
+          echo "DEBUG: diary_issue_body = $diary_issue_body"
+
+          # gh issue edit --repo "$MAIN_REPO" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
         env:
           GH_TOKEN: ${{ secrets.token || secrets.GH_TOKEN }}
           MAIN_REPO: ${{ inputs.main_repo }}
