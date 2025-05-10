@@ -18,6 +18,23 @@ on:
     secrets:
       token:
         required: true
+  workflow_dispatch:
+    inputs:
+      main_repo:
+        required: true
+        type: string
+      template_repo:
+        required: true
+        type: string
+      issue_template_repo:
+        required: true
+        type: string
+      timezone:
+        required: true
+        type: string
+    secrets:
+      token:
+        required: true
 
 jobs:
   build:
