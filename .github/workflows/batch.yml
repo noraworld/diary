@@ -101,11 +101,21 @@ jobs:
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
+  templates-linker:
+    needs: templates-creator
+    uses: noraworld/diary/.github/workflows/templates-linker.yml@main
+    with:
+      main_repo: noraworld/reserved-diary
+      template_repo: noraworld/diary-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
 
 
   # private-diary
   private-templates-closer:
-    needs: templates-creator
+    needs: templates-linker
     uses: noraworld/diary/.github/workflows/templates-closer.yml@main
     with:
       repo: noraworld/private-diary-templates
@@ -161,6 +171,16 @@ jobs:
       main_repo: noraworld/private-diary
       template_repo: noraworld/private-diary-templates
       issue_template_repo: noraworld/private-diary-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
+  private-templates-linker:
+    needs: private-templates-creator
+    uses: noraworld/diary/.github/workflows/templates-linker.yml@main
+    with:
+      main_repo: noraworld/private-diary
+      template_repo: noraworld/private-diary-templates
       timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
     secrets:
       token: ${{ secrets.GH_TOKEN }}
@@ -234,8 +254,18 @@ jobs:
     secrets:
       token: ${{ secrets.GH_TOKEN }}
 
-  daily-report-wage:
+  daily-report-templates-linker:
     needs: daily-report-templates-creator
+    uses: noraworld/diary/.github/workflows/templates-linker.yml@main
+    with:
+      main_repo: noraworld/daily-report
+      template_repo: noraworld/daily-report-templates
+      timezone: ${{ github.event.inputs.timezone || 'Asia/Tokyo' }}
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
+  daily-report-wage:
+    needs: daily-report-templates-linker
     uses: noraworld/diary/.github/workflows/wage.yml@main
     with:
       my_annual: ${{ github.event.inputs.my_annual || '864' }}
