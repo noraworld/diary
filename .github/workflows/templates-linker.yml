@@ -39,14 +39,13 @@ jobs:
 
           echo "$issue_list" | while IFS= read -r line; do
             display_name=$(echo "$line" | awk '{ print $1 }' | cut -d '_' -f4)
+            echo "DEBUG: display_name = $display_name"
             # https://chat.openai.com/share/0bb3dd50-70bb-4c09-8396-1f53824c3962
             escaped_url=$(echo "$line" | awk '{ print $2 }' | sed 's/[\^\$\.\/]/\\&/g')
+            echo "DEBUG: escaped_url = $escaped_url"
             diary_issue_body=$(echo "$diary_issue_body" | sed -E "s/$display_name/\[$display_name\]\($escaped_url\)/g")
+            echo "DEBUG: diary_issue_body = $diary_issue_body"
           done
-
-          echo "DEBUG: MAIN_REPO = $MAIN_REPO"
-          echo "DEBUG: diary_issue_body = $diary_issue_body"
-          echo "DEBUG: DIARY_ISSUE_NUMBER = $DIARY_ISSUE_NUMBER"
 
           gh issue edit --repo "$MAIN_REPO" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
         env:
