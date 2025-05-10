@@ -44,6 +44,10 @@ jobs:
             diary_issue_body=$(echo "$diary_issue_body" | sed -E "s/$display_name/\[$display_name\]\($escaped_url\)/g")
           done
 
+          echo "DEBUG: MAIN_REPO = $MAIN_REPO"
+          echo "DEBUG: diary_issue_body = $diary_issue_body"
+          echo "DEBUG: DIARY_ISSUE_NUMBER = $DIARY_ISSUE_NUMBER"
+
           gh issue edit --repo "$MAIN_REPO" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
         env:
           GH_TOKEN: ${{ secrets.token || secrets.GH_TOKEN }}
