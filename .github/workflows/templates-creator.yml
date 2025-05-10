@@ -45,7 +45,11 @@ jobs:
             exit 1
           fi
 
-          for issue_template in tmp/.github/ISSUE_TEMPLATE/*; do
+          find tmp/.github/ISSUE_TEMPLATE -type f | while read -r issue_template; do
+            raw_number=$(grep -m1 '^name:' "$issue_template" | sed -E 's/^name:[[:space:]]*([0-9]+)\..*/\1/')
+            number=$((10#$raw_number))
+            printf "%03d %s\n" "$number" "$issue_template"
+          done | sort -nr | while read -r number issue_template; do
             title=$(grep "title: " "$issue_template"                              |
                     sed -e 's/^title: //g'                                        |
                     sed -e "s/[\"\']//g"                                          |
