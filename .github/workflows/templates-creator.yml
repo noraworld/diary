@@ -102,7 +102,6 @@ jobs:
           done
 
           gh issue edit --repo "$MAIN_REPO" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
-        shell: sh
         env:
           GH_TOKEN: ${{ secrets.token || secrets.GH_TOKEN }}
           MAIN_REPO: ${{ inputs.main_repo }}
