@@ -32,9 +32,6 @@ on:
       timezone:
         required: true
         type: string
-    secrets:
-      token:
-        required: true
 
 jobs:
   build:
@@ -45,7 +42,7 @@ jobs:
         with:
           repository: ${{ inputs.issue_template_repo }}
           ref: main
-          token: ${{ secrets.token }}
+          token: ${{ secrets.token || secrets.GH_TOKEN }}
           path: tmp
 
       - name: Create issues from templates
@@ -107,7 +104,7 @@ jobs:
           gh issue edit --repo "$MAIN_REPO" --body "$diary_issue_body" "$DIARY_ISSUE_NUMBER"
         shell: sh
         env:
-          GH_TOKEN: ${{ secrets.token }}
+          GH_TOKEN: ${{ secrets.token || secrets.GH_TOKEN }}
           MAIN_REPO: ${{ inputs.main_repo }}
           TEMPLATE_REPO: ${{ inputs.template_repo }}
           TZ: ${{ inputs.timezone }}
