@@ -56,6 +56,19 @@ jobs:
 
             gh issue edit --repo "$MAIN_REPO" --body "$BODY_WITH_CHECKED_OPTIONAL_TASK" "$NUMBER"
           fi
+
+          EDITED_BODY=$(
+            gh issue view         \
+              --repo "$MAIN_REPO" \
+              --json body         \
+              --jq .body          \
+              "$NUMBER"
+          )
+
+          if [ "$BODY" = "$EDITED_BODY" ]; then
+            echo "ERROR: body doesn't seem to be changed!" >&2
+            exit 1
+          fi
         shell: sh
         env:
           MAIN_REPO: ${{ inputs.main_repo }}
