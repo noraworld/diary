@@ -43,7 +43,7 @@ jobs:
           )
           BODY_WITH_CHECKED_MANDATORY_TASK=$(
             echo "$BODY" |
-            sed -E "s/^\* \[ \] \[$TITLE/\* \[x\] \[$TITLE/g"
+            sed -E "s/^\* *\[ \](.*)\[$TITLE\]/\* \[x\]\1\[$TITLE\]/g"
           )
 
           if [ "$BODY" != "$BODY_WITH_CHECKED_MANDATORY_TASK" ]; then
@@ -51,7 +51,7 @@ jobs:
           else
             BODY_WITH_CHECKED_OPTIONAL_TASK=$(
               echo "$BODY" |
-              sed -E "s/^\* \[$TITLE/\* \[x\] \[$TITLE/g"
+              sed -E "s/^\*(.*)\[$TITLE\]/\* \[x\]\1\[$TITLE]/g"
             )
 
             gh issue edit --repo "$MAIN_REPO" --body "$BODY_WITH_CHECKED_OPTIONAL_TASK" "$NUMBER"
