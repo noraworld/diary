@@ -80,8 +80,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  issue-changer:
+  convert-unchecked:
     needs: wait-for-templates-closed
+    uses: noraworld/diary/.github/workflows/convert-unchecked.yml@main
+    with:
+      main_repo: noraworld/reserved-diary
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
+  issue-changer:
+    needs: convert-unchecked
     uses: noraworld/diary/.github/workflows/issue-changer.yml@main
     with:
       main_repo: noraworld/reserved-diary
@@ -154,8 +162,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  private-issue-changer:
+  private-convert-unchecked:
     needs: private-wait-for-templates-closed
+    uses: noraworld/diary/.github/workflows/convert-unchecked.yml@main
+    with:
+      main_repo: noraworld/private-diary
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
+  private-issue-changer:
+    needs: private-convert-unchecked
     uses: noraworld/diary/.github/workflows/issue-changer.yml@main
     with:
       main_repo: noraworld/private-diary
@@ -233,8 +249,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
-  daily-report-issue-changer:
+  daily-report-convert-unchecked:
     needs: daily-report-wait-for-templates-closed
+    uses: noraworld/diary/.github/workflows/convert-unchecked.yml@main
+    with:
+      main_repo: noraworld/daily-report
+    secrets:
+      token: ${{ secrets.GH_TOKEN }}
+
+  daily-report-issue-changer:
+    needs: daily-report-convert-unchecked
     uses: noraworld/diary/.github/workflows/issue-changer.yml@main
     with:
       main_repo: noraworld/daily-report
