@@ -79,3 +79,7 @@ jobs:
           git add _posts
           git commit -m "${{ env.YEAR }} 年 $(echo ${{ env.MONTH }} | sed 's/^0*//') 月 $(echo ${{ env.DAY }} | sed 's/^0*//') 日の日記を公開リポジトリに移動"
           git push -u origin main
+
+  deploy:
+    needs: migrate
+    uses: noraworld/diary/.github/workflows/pages.yml@main
