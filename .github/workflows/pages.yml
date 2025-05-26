@@ -12,5 +12,3 @@ on:
 jobs:
   build_and_deploy:
     uses: noraworld/jekyll-build-pages/.github/workflows/jekyll-gh-pages.yml@main
-    with:
-      ref: main
