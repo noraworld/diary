@@ -48,7 +48,7 @@ jobs:
         run: |
           if ! [ -e "reserved-diary/_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md" ]; then
             echo "reserved-diary/_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md does not exist" >&2
-            exit 1
+            exit 0
           fi
 
       - name: Check file duplication
