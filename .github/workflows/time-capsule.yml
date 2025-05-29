@@ -112,21 +112,19 @@ jobs:
       # Never execute "git add ." or "git add --all"!!!
       - name: Commit
         run: |
-          echo "DEBUG: ${{ env.DATE_FOR_MSG }}の日記を移動する予定です。"
+          # https://qiita.com/thaim/items/3d1a4d09ec4a7d8844ce
+          git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+          git add _posts
+          git commit -m "${{ env.DATE_FOR_MSG }}の日記を公開"
+          git push -u origin main
 
-          # # https://qiita.com/thaim/items/3d1a4d09ec4a7d8844ce
-          # git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
-          # git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
-          # git add _posts
-          # git commit -m "${{ env.DATE_FOR_MSG }}の日記を公開"
-          # git push -u origin main
-
-          # cd reserved-diary
-          # git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
-          # git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
-          # git add _posts
-          # git commit -m "${{ env.DATE_FOR_MSG }}の日記を公開リポジトリに移動"
-          # git push -u origin main
+          cd reserved-diary
+          git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+          git add _posts
+          git commit -m "${{ env.DATE_FOR_MSG }}の日記を公開リポジトリに移動"
+          git push -u origin main
 
   deploy:
     needs: migrate
