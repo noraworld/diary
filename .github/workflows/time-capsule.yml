@@ -11,7 +11,78 @@ on:
     - cron: '0 3 * * *'
 
 jobs:
+  set:
+    runs-on: ubuntu-latest
+    outputs:
+      date: ${{ steps.date.outputs.date }}
+      year: ${{ steps.year.outputs.year }}
+      month: ${{ steps.month.outputs.month }}
+      day: ${{ steps.day.outputs.day }}
+    steps:
+      - name: Get date
+        id: date
+        run: |
+          if [ "$(echo "${{ github.event.inputs.date }}" |
+            grep -cE "^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")" -eq 1 ]
+          then
+            echo "date=${{ github.event.inputs.date }}" >> $GITHUB_OUTPUT
+          else
+            echo "date=$(date -d "3 years ago" +"%Y-%m-%d")" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get year
+        id: year
+        run: echo "year=$(cut -d '-' -f1 <<< ${{ steps.date.outputs.date }})" >> $GITHUB_OUTPUT
+
+      - name: Get month
+        id: month
+        run: echo "month=$(cut -d '-' -f2 <<< ${{ steps.date.outputs.date }})" >> $GITHUB_OUTPUT
+
+      - name: Get day
+        id: day
+        run: echo "day=$(cut -d '-' -f3 <<< ${{ steps.date.outputs.date }})" >> $GITHUB_OUTPUT
+
+  check:
+    needs: set
+    runs-on: ubuntu-latest
+    outputs:
+      found: ${{ steps.existence.outputs.found }}
+      not_duplicated: ${{ steps.duplication.outputs.not_duplicated }}
+    steps:
+      - name: Check out noraworld/diary
+        uses: actions/checkout@v4
+
+      - name: Check out noraworld/reserved-diary
+        uses: actions/checkout@v4
+        with:
+          repository: noraworld/reserved-diary
+          ref: main
+          token: ${{ secrets.GH_TOKEN }}
+          path: reserved-diary
+
+      - name: Check file existence
+        id: existence
+        run: |
+          if [ -e "reserved-diary/_posts/${{ needs.set.outputs.year }}/${{ needs.set.outputs.month }}/${{ needs.set.outputs.date }}-.md" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+          else
+            echo "reserved-diary/_posts/${{ needs.set.outputs.year }}/${{ needs.set.outputs.month }}/${{ needs.set.outputs.date }}-.md does not exist" >&2
+            echo "found=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check file duplication
+        id: duplication
+        run: |
+          if ! [ -e "_posts/${{ needs.set.outputs.year }}/${{ needs.set.outputs.month }}/${{ needs.set.outputs.date }}-.md" ]; then
+            echo "not_duplicated=true" >> $GITHUB_OUTPUT
+          else
+            echo "_posts/${{ needs.set.outputs.year }}/${{ needs.set.outputs.month }}/${{ needs.set.outputs.date }}-.md already exists" >&2
+            echo "not_duplicated=false" >> $GITHUB_OUTPUT
+          fi
+
   migrate:
+    needs: [set, check]
+    if: needs.check.outputs.found == 'true' && needs.check.outputs.not_duplicated == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Check out noraworld/diary
@@ -25,44 +96,18 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           path: reserved-diary
 
-      - name: Get date
-        run: |
-          if [ "$(echo "${{ github.event.inputs.date }}" |
-            grep -cE "^20[0-9]{2}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")" -eq 1 ]
-          then
-            echo "DATE=${{ github.event.inputs.date }}" >> $GITHUB_ENV
-          else
-            echo "DATE=$(date -d "3 years ago" +"%Y-%m-%d")" >> $GITHUB_ENV
-          fi
-
-      - name: Get year
-        run: echo "YEAR=$(cut -d '-' -f1 <<< $DATE)" >> $GITHUB_ENV
-
-      - name: Get month
-        run: echo "MONTH=$(cut -d '-' -f2 <<< $DATE)" >> $GITHUB_ENV
-
-      - name: Get day
-        run: echo "DAY=$(cut -d '-' -f3 <<< $DATE)" >> $GITHUB_ENV
-
-      - name: Check file existence
-        run: |
-          if ! [ -e "reserved-diary/_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md" ]; then
-            echo "reserved-diary/_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md does not exist" >&2
-            exit 1
-          fi
-
-      - name: Check file duplication
-        run: |
-          if [ -e "_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md" ]; then
-            echo "_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md already exists" >&2
-            exit 1
-          fi
-
       - name: Create directory
-        run: mkdir -p _posts/${{ env.YEAR }}/${{ env.MONTH }}
+        run: mkdir -p _posts/${{ needs.set.outputs.year }}/${{ needs.set.outputs.month }}
 
       - name: Migrate file
-        run: mv -n reserved-diary/_posts/${{ env.YEAR }}/${{ env.MONTH }}/${{ env.DATE }}-.md _posts/${{ env.YEAR }}/${{ env.MONTH }}
+        run: |
+          mv -n \
+          reserved-diary/_posts/${{ needs.set.outputs.year }}/${{ needs.set.outputs.month }}/${{ needs.set.outputs.date }}-.md \
+          _posts/${{ needs.set.outputs.year }}/${{ needs.set.outputs.month }}
+
+      - name: Set date for commit message
+        run: |
+          echo "DATE_FOR_MSG=${{ needs.set.outputs.year }} 年 $(echo ${{ needs.set.outputs.month }} | sed 's/^0*//') 月 $(echo ${{ needs.set.outputs.day }} | sed 's/^0*//') 日" >> $GITHUB_ENV
 
       # Never execute "git add ." or "git add --all"!!!
       - name: Commit
@@ -71,13 +116,14 @@ jobs:
           git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
           git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
           git add _posts
-          git commit -m "${{ env.YEAR }} 年 $(echo ${{ env.MONTH }} | sed 's/^0*//') 月 $(echo ${{ env.DAY }} | sed 's/^0*//') 日の日記を公開"
+          git commit -m "${{ env.DATE_FOR_MSG }}の日記を公開"
           git push -u origin main
+
           cd reserved-diary
           git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
           git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
           git add _posts
-          git commit -m "${{ env.YEAR }} 年 $(echo ${{ env.MONTH }} | sed 's/^0*//') 月 $(echo ${{ env.DAY }} | sed 's/^0*//') 日の日記を公開リポジトリに移動"
+          git commit -m "${{ env.DATE_FOR_MSG }}の日記を公開リポジトリに移動"
           git push -u origin main
 
   deploy:
