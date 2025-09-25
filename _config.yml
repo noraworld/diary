@@ -33,10 +33,15 @@ url: "https://noraworld.github.io" # the base hostname & protocol for your site,
 
 twitter_username: _noraworld
 github_username:  noraworld
-permalink: /:year/:month/:day
 
-paginate: 30
-paginate_path: /page/:num
+jekyll-archives:
+  enabled:
+    - month
+  layouts:
+    month: month
+  permalinks:
+    month: /:year/:month/
+permalink: /:year/:month/:day
 
 # Build settings
 remote_theme: daattali/beautiful-jekyll
@@ -50,6 +55,7 @@ plugins:
   - jekyll-paginate
   - jekyll-remote-theme
   - jemoji
+  - jekyll-archives
 
 timezone: Asia/Tokyo
 
