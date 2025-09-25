@@ -1,0 +1,58 @@
+---
+layout: default
+---
+
+{%- assign posts_by_month = site.posts | group_by_exp: "post", "post.date | date: '%Y-%m'" -%}
+
+{%- if page.path == "index.html" -%}
+  {%- assign date = site.posts[0].date -%}
+  {%- assign latest_month = date | date: '%Y-%m' -%}
+  {%- assign latest_monthly_posts = posts_by_month | where: "name", latest_month | first -%}
+  {%- assign posts = latest_monthly_posts.items | reverse -%}
+{%- else -%}
+  {%- assign date = page.date -%}
+  {%- assign posts = page.posts | reverse -%}
+{%- endif -%}
+
+{%- assign month_key = date | date: "%Y-%m" -%}
+{%- assign month_display = date | date: "%Y %b" -%}
+
+<h1>{{ month_display }}</h1>
+<ul>
+  {%- for post in posts -%}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.date | date: "%Y-%m-%d" }}</a>
+    </li>
+  {%- endfor -%}
+</ul>
+
+{%- assign prev_url = nil -%}
+{%- assign next_url = nil -%}
+
+{%- for monthly_posts in posts_by_month -%}
+  {%- if monthly_posts.name == month_key -%}
+    {%- assign index = forloop.index0 -%}
+    {%- assign prev_index = index | plus: 1 -%}
+    {%- assign next_index = index | minus: 1 -%}
+
+    {%- if prev_index < posts_by_month.size -%}
+      {%- assign prev_name = posts_by_month[prev_index].name -%}
+      {%- assign prev_url = '/' | append: prev_name | replace: '-', '/' | append: '/' -%}
+    {%- endif -%}
+
+    {%- if next_index >= 0 -%}
+      {%- assign next_name = posts_by_month[next_index].name -%}
+      {%- assign next_url = '/' | append: next_name | replace: '-', '/' | append: '/' -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<nav class="archive-nav">
+  {%- if prev_url -%}
+    <a href="{{ prev_url | relative_url }}">&laquo; Prev month</a>
+  {%- endif -%}
+
+  {%- if next_url -%}
+    <a href="{{ next_url | relative_url }}" style="float:right;">Next month &raquo;</a>
+  {%- endif -%}
+</nav>
